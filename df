@@ -1,0 +1,85 @@
+[33mcommit c07617988500b8731a09b4ed52dcbd0018bcf2ed[m[33m ([m[1;36mHEAD[m[33m)[m
+Author: unknown <martin.kasak11@gmail.com>
+Date:   Mon Sep 23 16:24:45 2019 +0300
+
+    Lab1:Product page, url params
+
+[33mcommit 391ff478f09589085eda596b37aea6c71ed62a72[m[33m ([m[1;31morigin/master[m[33m, [m[1;31mheroku/master[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: ddb50fd 7f9ba94
+Author: unknown <martin.kasak11@gmail.com>
+Date:   Mon Sep 23 15:40:54 2019 +0300
+
+    Merge branch 'master' of https://github.com/MartinKasak/Rakenduste_Programmeerimine
+
+[33mcommit ddb50fd575207995650f2922bd464458934baa87[m
+Author: unknown <martin.kasak11@gmail.com>
+Date:   Mon Sep 23 15:40:16 2019 +0300
+
+    nimi
+
+[33mcommit 7f9ba94b8dc186c822281009559a52ffb1b8f9f2[m
+Merge: 3919162 4fed94d
+Author: MartinKasak <MartinKasak@users.noreply.github.com>
+Date:   Mon Sep 23 15:38:19 2019 +0300
+
+    Merge pull request #2 from MartinKasak/Lesson1
+    
+    Merge pull request #1 from MartinKasak/master
+
+[33mcommit 4fed94d4e0fe49dcc2ffcab6d474b70bfb245c04[m
+Merge: 78ab3fd 3919162
+Author: MartinKasak <MartinKasak@users.noreply.github.com>
+Date:   Mon Sep 23 15:28:19 2019 +0300
+
+    Merge pull request #1 from MartinKasak/master
+    
+    Master
+
+[33mcommit 3919162379b085820acfc0fa23b436af4e9781f6[m
+Author: unknown <martin.kasak11@gmail.com>
+Date:   Mon Sep 23 15:27:20 2019 +0300
+
+    reademe
+
+[33mcommit 8113443b723d646bde137286b8769f3e037a01f8[m
+Author: unknown <martin.kasak11@gmail.com>
+Date:   Mon Sep 23 15:18:16 2019 +0300
+
+    esimene
+
+[33mcommit b0cf086a64aeb943ffa5077207b97d3452e25190[m
+Author: unknown <martin.kasak11@gmail.com>
+Date:   Mon Sep 23 15:10:33 2019 +0300
+
+    -
+
+[33mcommit e5f578aa45dd8fdf4d9f88fd01d79ef70819c40b[m
+Merge: 7b62e0a 78ab3fd
+Author: unknown <martin.kasak11@gmail.com>
+Date:   Mon Sep 23 15:02:53 2019 +0300
+
+    Lab 1 Heroku npm run start process.env.PORT
+
+[33mcommit 7b62e0a977234d6b378aff0573ab982745aef1f9[m
+Author: unknown <martin.kasak11@gmail.com>
+Date:   Mon Sep 23 15:00:22 2019 +0300
+
+    Lab 1 Heroku npm run start process.env.PORT
+
+[33mcommit 78ab3fd63e80a68544d84ecc72f28e3f50b95e3c[m
+Author: MartinKasak <MartinKasak@users.noreply.github.com>
+Date:   Sun Sep 22 17:24:16 2019 +0300
+
+    Create README.md
+
+[33mcommit 47205a2aaa59c6277e7b8206323c672768e1ed3d[m
+Author: MartinKasak <MartinKasak@users.noreply.github.com>
+Date:   Mon Sep 2 14:02:10 2019 +0300
+
+    3.1
+
+[33mcommit b63368ebf610c29b8f6450e526062dbaa4c284dd[m
+Author: MartinKasak <MartinKasak@users.noreply.github.com>
+Date:   Mon Sep 2 13:04:31 2019 +0300
+
+    Create hello.html
