@@ -5,16 +5,7 @@
     <title>Rakenduste Programmeerimine</title>
 
     <link href="main.css" rel="stylesheet">
-    <script>
-        //alert("Hello word, item page!");
-        const x = window.location;
-        console.log(x);
-        const urlParams = new URLSearchParams(window.location.search);
-        const title = (urlParams.get("title"));
-        const cost = (urlParams.get("cost"));
-        const src = (urlParams.get("src"));
-        alert(`Title: ${title} cost: ${cost} path ${src}`)
-    </script>
+    <script src="item.js"></script>
 
   </head>
   <style type="text/css"></style>
@@ -30,10 +21,9 @@
             <button>Cart</button>
         </div>      
     </div>
-    <div class="content">
-        Olen toote lehel
-
-
+    <br>
+    <div class="content" id="item-body">
+      
     </div>
    
     
