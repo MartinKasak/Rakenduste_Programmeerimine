@@ -4,10 +4,12 @@
   "scripts": {
     "build": "webpack",
     "start": "node server.js",
-    "start:dev": "webpack-dev-server --open"
+    "start:dev": "webpack-dev-server --open --mode\"development\""
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.2",
