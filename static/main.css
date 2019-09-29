@@ -11,6 +11,9 @@ body{
     display: flex;
     justify-content: space-between;
     align-items:center;
+    margin-bottom: 25px;
+    position: sticky;
+    top: 0;
 }
 .header__logo{
     width:60px;
@@ -24,12 +27,15 @@ body{
     display:flex;
     justify-content:space-around;
     flex-wrap: wrap;
+    width: 1000px;
+    margin: 0 auto;
 }
 .item { 
     box-shadow:0px 2px 6px 0px rgba(0,0,0, 0.2);
     border-radius: 5px;
     padding:5px;
-    width: 300px;
+    width: 200px;
+    height: 400px;
     margin-bottom: 25px;
 }
 
@@ -40,11 +46,11 @@ body{
 }
 
 .item img{
-    width:300px;
+    width:180px;
 }
 .item__title{
     color:#e68e3c;
-    font-size:25px;
+    font-size:21px;
 }
 .item__price{
     color:#e68e3c;
