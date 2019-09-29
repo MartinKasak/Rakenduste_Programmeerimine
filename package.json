@@ -10,6 +10,9 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
     "copy-webpack-plugin": "^5.0.4",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8"
