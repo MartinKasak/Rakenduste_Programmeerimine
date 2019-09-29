@@ -5,6 +5,8 @@
     const titleClass = "s-item__title";
     const priceClass = "s-item__price";
   
+    const category = document.title.split("|")[0].trim()
+
     const items = document.getElementsByClassName(itemContainerClass);
   
     const arr = [];
@@ -26,7 +28,7 @@
         imgSrc: src,
         title,
         price,
-        category: document.title.split("|")[0].trim(),
+        category,
       })
   
     });
