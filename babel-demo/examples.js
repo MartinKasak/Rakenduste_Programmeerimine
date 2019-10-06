@@ -76,4 +76,8 @@ try{
 }
 catch(e){
   console.log("FAIL")
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> lesson3
