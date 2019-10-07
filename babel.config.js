@@ -1,12 +1,5 @@
 const presets = [
     [
-<<<<<<< HEAD
-      "@babel/env",
-    ],
-  ];
-  
-  module.exports = { presets };
-=======
       "@babel/env"
     ],
     [
@@ -16,4 +9,3 @@ const presets = [
   
   module.exports = { presets };
   
->>>>>>> lesson3

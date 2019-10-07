@@ -10,11 +10,11 @@ class ItemPage extends React.PureComponent{
         <Header/>
         <div className={"itemContainer"}>
             <img src={item.imgSrc} />
-            <div className={'item__title'}>{item.title}</div>
+            <div className={"item__title"}>{item.title}</div>
             <div className={"item__price"}>{item.price}</div>
         </div>
       </>
-      ) 
+      ); 
     }
   }
 

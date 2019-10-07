@@ -12,7 +12,7 @@ const Header = () => {
         <button>Cart</button>
           </div>
       </div>
-    )
+    );
   
   };
 
