@@ -4,7 +4,8 @@
   "scripts": {
     "build": "webpack",
     "start": "node server.js",
-    "start:dev": "webpack-dev-server --open --mode\"development\""
+    "start:dev": "webpack-dev-server --open --mode\"development\"",
+    "lint": "eslint --version"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -16,13 +17,11 @@
     "@babel/cli": "^7.6.2",
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
-<<<<<<< HEAD
-=======
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
->>>>>>> lesson3
     "copy-webpack-plugin": "^5.0.4",
+    "eslint-plugin-react": "^7.16.0",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8",
     "webpack-dev-server": "^3.8.1"
