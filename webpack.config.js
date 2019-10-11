@@ -40,8 +40,9 @@ module.exports = {
     ])
   ],
   devServer:{
+    
     contentBase: path.join(__dirname, "dist"),
-    historyApiFallback: true,
+   // historyApiFallback: true,
     compress: true,
     port: 9000,
     proxy: {

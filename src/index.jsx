@@ -9,7 +9,7 @@ const root = document.getElementById("app");
 ReactDOM.render(
   <BrowserRouter>
   <Route path="/" exact component={HomePage}/>
-  <Route path="/item" exact component={ItemPage}/>
+  <Route path="/items/:itemId" exact component={ItemPage}/>
   </BrowserRouter>,
   root
 );
