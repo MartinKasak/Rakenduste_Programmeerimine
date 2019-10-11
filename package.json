@@ -4,7 +4,7 @@
   "scripts": {
     "build": "webpack",
     "start": "node server/server.js",
-    "start:dev": "webpack-dev-server --open --mode\"development\"",
+    "start:dev": "webpack-dev-server --open --mode=\"development\"",
     "lint": "eslint --version"
   },
   "dependencies": {
