@@ -1,9 +1,9 @@
 const presets = [
     [
-      "@babel/env"
+      "@babel/env",
     ],
     [
-      "@babel/preset-react"
+      "@babel/preset-react",
     ],
   ];
   

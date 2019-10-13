@@ -1,21 +1,20 @@
 import React from "react";
 import Header from "./Header.jsx";
-import PropTypes from "prop.types";
+//import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
 
 class ItemPage extends React.PureComponent{  
   constructor(props){
     super(props);
-    this.state - {};
+    this.state = {};
   }
-
   componentDidMount(){
     this.fetchItem();
   }
 
   fetchItem = () => {
-    fetch("/api/items/${this.props.match.parama.itemId}")
+    fetch(`/api/items/${this.props.match.params.itemId}`)
     .then(res =>{
-
       return res.json();
     })
     .then(item=>{
@@ -30,10 +29,10 @@ class ItemPage extends React.PureComponent{
   }
 
     render(){
-      console.log("this.props", this.props);
-      console.log("itemID", this.props.match.params.itemId);
+    //  console.log("this.props", this.props);
+    //  console.log("itemID", this.props.match.params.itemId);
 
-      console.log("this.state",this.state );
+    //  console.log("this.state",this.state );
       return (
         <>
         <Header/>
@@ -47,8 +46,8 @@ class ItemPage extends React.PureComponent{
     }
   }
 
-  ItemPage.propTypes = {
-    match:PropTypes.object.isRequired,
-  };
+ItemPage.propTypes = {
+  match:PropTypes.object.isRequired,
+};
 
-  export default ItemPage;
+export default ItemPage;

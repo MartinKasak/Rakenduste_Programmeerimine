@@ -15,9 +15,9 @@ const getItems = () => {
             category:"phones"
         });
     });
-    laptops.forEach((laptops, index)=>{
+    laptops.forEach((laptop, index)=>{
         items.push({
-            ...laptops,
+            ...laptop,
             id:"laptops-"+index,
             category:"laptops"
         });

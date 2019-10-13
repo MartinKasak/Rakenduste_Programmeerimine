@@ -10,25 +10,6 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js"
   },
-  module: {
-    rules: [
-      {
-        failOnError:"true",
-        enforce:"pre",
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loader: "eslint-loader",
-        options: {
-          failOnError:"true",
-        },
-      },
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use:  "babel-loader" 
-      }
-    ]
-  },
   plugins: [
     new CleanWebpackPlugin(),
     new CopyPlugin([
@@ -36,15 +17,33 @@ module.exports = {
         from: "public"
       }
     ])
+    
   ],
   devServer:{
-    
     contentBase: path.join(__dirname, "dist"),
-   // historyApiFallback: true,
+    historyApiFallback: true,
     compress: true,
     port: 9000,
-    proxy: {
-      "/api": "http://localhost:3000"
+    proxy:{
+      "/api":"http://localhost:7171"
     }
+  },
+  module: {
+    rules: [
+    {
+        enforce: "pre",
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader",
+        options: {
+            failOnError:true,
+        },
+    },
+      { 
+        test: /\.(js|jsx)$/, 
+        exclude: /node_modules/,
+        use: "babel-loader"
+      }
+    ]
   }
 };
