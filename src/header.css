@@ -1,0 +1,50 @@
+
+.header{
+    z-index:100;
+    box-shadow:2px 2px 3px rgba(0,0,0,0.2);
+    background: white;
+    padding:10px 25 px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom: 25px;
+    position:sticky;
+    top:0;
+}
+
+.header__logo{
+    width:60px;
+}
+
+.header__buttons{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.header__buttons img{
+    height:25px;
+}
+
+.header__button{
+    display:flex;
+    align-items:center;
+    height:100%;
+    color:#333;
+    transition: all .3s;
+    cursor:pointer; 
+}
+
+.header__button:first-of-type{
+    margin-right:25px;
+}
+
+.header__button:hover{
+    color:#d41d46
+
+}
+
+.header__button-text{
+    padding-left:5px;
+    font-size:14px;
+}
