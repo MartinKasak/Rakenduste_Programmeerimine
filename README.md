@@ -22,4 +22,4 @@ Mõtted:
 17)Keele valik //Eesti, Vene, Inglise
 18)Google maps lokatsiooni koht//storelocator
 19)Toote sorteerimine most popular, newest, color, brand
-20)Toote värvi ja suuruse valik. Nt red, one size
+20)Toote värvi ja suuruse valik. Nt red, one size.
