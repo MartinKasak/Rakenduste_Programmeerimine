@@ -37,6 +37,7 @@ body{
     width: 200px;
     height: 400px;
     margin-bottom: 25px;
+    /*background: red;*/
 }
 
 .item:hover{
