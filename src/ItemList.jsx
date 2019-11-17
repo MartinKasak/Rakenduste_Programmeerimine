@@ -37,7 +37,7 @@ const ItemList = (props) => {
                 <div className = "item_title">{props.title}</div>
                 <div className={"item_footer"}>
                     <div className = "item_price">{props.price}</div>
-                    <div className="item_reviews">{`(${getRandomIntInclusive(0,100)} reviews)`}</div>
+                    
                 </div>
             </div>
           </Link>
@@ -52,9 +52,3 @@ const ItemList = (props) => {
   };
 
   export default ItemList;
-
-  function getRandomIntInclusive(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-  }

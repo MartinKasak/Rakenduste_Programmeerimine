@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const DB = require("./database.js");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const itemSchema = new mongoose.Schema({
     imgSrc: { type: String, required: true },
@@ -36,11 +36,7 @@ router.post("/api/new-item", (req, res) => {
     });
 });
 
-/* ----- New queries, using items2 to differentiate ----- */
 
-/**
- * Returns an item
- */
 router.get("/api/items2/:itemId",(req, res)=>{
     Item.findById(req.params.itemId, function(err, item) {
         if(err){
@@ -52,9 +48,7 @@ router.get("/api/items2/:itemId",(req, res)=>{
     });
 });
 
-/**
- * Returns all items
- */
+
 router.get("/api/items2",(req, res)=>{
     Item.find({}, function(err, items){
         if(err){
@@ -66,11 +60,7 @@ router.get("/api/items2",(req, res)=>{
     });
 });
 
-/* ----- Queries for old items, delete when exported ----- */
 
-/**
- * GET all items
- */
 router.get("/api/items",(req, res)=>{
     res.json(DB.getItems());
 });
