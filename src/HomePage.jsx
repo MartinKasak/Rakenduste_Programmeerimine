@@ -3,6 +3,7 @@ import React from "react";
 //import {laptops, phones} from "./mydatabase.js";
 import Header from "./Header.jsx";
 import ItemList from "./ItemList.jsx";
+import Checkbox from "./Checkbox.jsx";
 
 
 class HomePage extends React.PureComponent{
@@ -11,9 +12,9 @@ class HomePage extends React.PureComponent{
       super(props);
       this.state = {
         items: [], 
-        selectedCategory:"phones",
+        allCategories:["phones", "laptops"],
+        selectedCategories:["phones"],
       };
-      
     }
   
     componentDidMount(){
@@ -38,30 +39,49 @@ class HomePage extends React.PureComponent{
     };
 
    
-  handleDropdown(event){
-    console.log(event.target.value);
+  handleDropdown = (event) => {
+    console.log(event.target.value, event.target.name);
+    if(this.isSelected(event.target.name)){
+      const clone = this.state.selectedCategories.slice();
+      const index = this.state.selectedCategories.indexOf(event.target.name);
+      clone.splice(index, 1);
+      this.setState({
+        selectedCategories:clone
+      })
+    }
+  else{
     this.setState({
-      selectedCategory:event.target.value
+      selectedCategories:this.state.selectedCategories.concat([event.target.name])
+      
     });
   }
 
   getVisibleItems = () => {
-    return this.state.items.filter(item => item.category === this.state.selectedCategory);
+    return this.state.items.filter(item => this.isSelected(item.category));
   };
+
+  isSelected = (name) => this.state.selectedCategories.indexOf(name) >= 0; 
 
   render(){
     console.log("this.state", this.state);
     return (
       <>
       <Header/>
-      <select onChange={this.handleDropdown.bind(this)}>
-        <option value="phones">Phones</option>
-        <option value="laptops">Laptops</option>
-      </select>
-      <ItemList items={this.getVisibleItems()} />
-    </>
+      {
+        this.state.allCategories.map(categoryName =>{
+          return (
+            <Checkbox 
+              key={categoryName}
+              name={categoryName} 
+              onChange={this.handleDropdown} 
+              checked={this.isSelected(categoryName)}
+             />
+            );
+          })
+        } 
+        <ItemList items={this.getVisibleItems()} />
+      </>
     ); 
   }
 }
-
-export default HomePage;
+export default HomePage ;
