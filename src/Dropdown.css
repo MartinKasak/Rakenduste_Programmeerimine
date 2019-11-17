@@ -1,4 +1,6 @@
-.custom-select-wrapper {
+  
+  /** Custom Select **/
+  .custom-select-wrapper {
     position: relative;
     display: inline-block;
     user-select: none;

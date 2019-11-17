@@ -1,10 +1,9 @@
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 
 module.exports = {
-  mode: "none",
+  mode: "production",
   entry: "./src/index.jsx",
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -14,40 +13,41 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyPlugin([
       {
-        from: "public"
+      from: "public"
       }
     ])
-    
   ],
-  devServer:{
-    contentBase: path.join(__dirname, "dist"),
-    historyApiFallback: true,
-    compress: true,
-    port: 9000,
-    proxy:{
-      "/api":"http://localhost:7171"
-    }
-  },
   module: {
     rules: [
-    {
+      {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
-    },
-    {
+      },
+      {
         enforce: "pre",
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: "eslint-loader",
         options: {
-            failOnError:true,
+          failOnError: true,
         },
-    },
-      { 
-        test: /\.(js|jsx)$/, 
+      },
+      {
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: "babel-loader"
+        use: {
+          loader: "babel-loader",
+        }
       }
     ]
+  },
+  devServer: {
+    historyApiFallback: true,
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 9000,
+    proxy: {
+      "/api": "http://localhost:3000"
+    }
   }
 };

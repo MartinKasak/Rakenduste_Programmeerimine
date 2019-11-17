@@ -2,13 +2,14 @@
     box-sizing: inherit;
 }
 .toggler {
-    width: 82px;    
+    width: 72px;
+    /* margin: 40px auto; */
 }
-.toggler__name {
-    margin-left: 6px;
-    font-size: 15px;
-    color: white;
-    font-family: 'Lobster', cursive;
+.toggler_name{
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #999;
+    text-transform: capitalize;
 }
 .toggler input {
     display: none;
@@ -18,15 +19,15 @@
     position: relative;
     width: 72px;
     height: 36px;
-    border: 1px solid #d6d6d600;
+    border: 1px solid #d6d6d6;
     border-radius: 36px;
-    background: #9d9bac1a;
+    background: #e4e8e8;
     cursor: pointer;
 }
 .toggler label::after {
     display: block;
     border-radius: 100%;
-    background-color: #464646bb;
+    background-color: #d7062a;
     content: '';
     animation-name: toggler-size;
     animation-duration: 0.15s;
@@ -48,7 +49,7 @@
     left: 75%;
 }
 .toggler input:checked + label::after {
-    background-color: #c710f5a6;
+    background-color: #50ac5d;
     animation-name: toggler-size2;
 }
 .toggler .toggler-on, .toggler .toggler-off {
