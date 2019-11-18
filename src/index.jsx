@@ -8,6 +8,8 @@ import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import UserPage from "./pages/UserPage.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import store from "./store";
+console.log("hello", store);
 
 const authDefaultValue = {
   
