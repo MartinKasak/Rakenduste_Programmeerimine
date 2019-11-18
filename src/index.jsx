@@ -47,13 +47,8 @@ class App extends React.Component {
         />} 
       />
       <Route path="/signup" exact component={SignupPage} />
-      <Route 
-        path="/users/:userId" 
-        exact 
-        render = { (props) => {
-          return <UserPage {...props} user = {this.state.user} />;
-        }} 
-      />
+      <Route path="/users/:userId" exact component={UserPage}/>
+
       <Route path="/items/:itemId" exact component={ItemPage} />
       <Route component = {NotFound} />
       </Switch>
