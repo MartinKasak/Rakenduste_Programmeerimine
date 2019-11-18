@@ -4,6 +4,7 @@ import Checkbox from "../components/Checkbox.jsx";
 import PropTypes from "prop-types";
 import "./homepage.css";
 import Dropdown from "../components/Dropdown.jsx";
+import { getItems } from "../actions/itemsActions.js";
 
 
 class HomePage extends React.PureComponent{
@@ -22,11 +23,7 @@ componentDidMount(){
 }
 
 fetchItems = () => {
-  fetch("/api/v1/items")
-  .then(res => {
-    console.log("res", res);
-    return res.json();
-  })
+  getItems()
   .then( items => {
     console.log("items", items);
     this.setState({

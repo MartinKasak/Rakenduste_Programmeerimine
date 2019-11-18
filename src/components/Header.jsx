@@ -8,25 +8,25 @@ import authConsumer from "./authConsumer.jsx";
 const Header = ({user}) => {
     return (
       <div className = "header">
-      <Link to ={"/"}>
-        <img className="header_logo" src="/images/Tlu_logo.png"/>
-      </Link>
-      <div className="header_buttons">
-        {user.email && <WelcomeIcon user = {user} />}
-        {!user.email && <LoginRegisterIcon />}          
-        <div className={"header_button"}>
-          <img src ={cartIcon} style={{height: 35}}/>
-          <div className={"header_button-text"}>Cart</div>
-          </div>
-          </div>
-      </div> 
+        <Link to ={"/"}>
+          <img className="header_logo" src="/images/Tlu_logo.png"/>
+        </Link>
+        <div className="header_buttons">
+          {user.email && <WelcomeIcon user = {user} />}
+          {!user.email && <LoginRegisterIcon />}          
+          <Link to={"/checkout/cart"} className={"header_button"}>
+            <img src ={cartIcon} style={{height: 35}}/>
+            <div className={"header_button-text"}>Cart</div>
+          </Link>
+        </div>
+      </div>    
     );
   };
+
   Header.propTypes = {
     token: PropTypes.string,
     user: PropTypes.object,
   };
-
 
   const LoginRegisterIcon = () => (
     <Link className={"header_button"} to={"/login"}>
@@ -47,4 +47,4 @@ const Header = ({user}) => {
   };
 
 
-  export default authConsumer(Header); 
+  export default authConsumer(Header);

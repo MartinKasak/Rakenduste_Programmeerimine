@@ -16,4 +16,4 @@ const authConsumer = (WrappedComponent) => {
     };
 };
 
-export default authConsumer; 
+export default authConsumer;
