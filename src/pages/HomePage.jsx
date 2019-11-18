@@ -37,22 +37,29 @@ fetchItems = () => {
     console.log("err", err);
   });
 };
+  handleFilterSelect = (event) => {
+  const categoryName = event.target.name;
+  if(this.isSelected(categoryName)){
+    return this.unselectCategory(categoryName);
+    
 
-    handleDropdown = (event) => {
-      console.log(event.target.value);
-      if(this.isSelected(event.target.name)){
-        const clone = this.state.selectedCategories.slice();
-        const index = this.state.selectedCategories.indexOf(event.target.name);
-        clone.splice(index, 1);
-        this.setState({
-          selectedCategories: clone
-        });
       }
-      else {
-        this.setState( {
-          selectedCategories: this.state.selectedCategories.concat([event.target.name])
-        });
-      }
+
+      this.selectCategory(categoryName);
+    };
+
+    selectCategory = (categoryName) => {
+      this.setState( {
+        selectedCategories: this.state.selectedCategories.concat([categoryName])
+      });
+    };
+
+    unselectCategory = (categoryName) => {
+      const newArr = this.state.selectedCategories.filter(cn => cn !== categoryName);
+      this.setState({
+        selectedCategories: newArr
+      });
+
     };
 
     getVisibleItems = () => {
@@ -82,7 +89,7 @@ fetchItems = () => {
           <div className={"filters-wrapper"}>
             <ItemFilters
               allCategories={this.state.allCategories}
-              handleDropdown={this.handleDropdown}
+              handleDropdown={this.handleFilterSelect}
               isSelected={this.isSelected}
             />
           </div>
