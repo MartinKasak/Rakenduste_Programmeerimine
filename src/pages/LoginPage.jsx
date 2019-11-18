@@ -1,8 +1,15 @@
 import React from "react";
 import "./loginform.css";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class LoginPage extends React.PureComponent {
+
+    static propTypes = {
+        history: PropTypes.object.isRequired,
+        onLogin: PropTypes.func.isRequired,
+    };
+
 
     constructor(props) {
         super(props);
@@ -15,7 +22,7 @@ class LoginPage extends React.PureComponent {
     handleSubmit = (event) => {
         event.preventDefault();
         console.log("submit", this.state); 
-        fetch("/api/users/login", {
+        fetch("/api/v1/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -23,8 +30,11 @@ class LoginPage extends React.PureComponent {
 
             body: JSON.stringify(this.state),
         })
-        .then( res => {
-            console.log("response", res);
+        .then( res=> res.json())
+        .then( ({token, user}) => {
+            console.log("response", token, user);
+            this.props.onLogin({token, user});
+            this.props.history.push(`/users/${user._id}`);
         })
         .catch ( err => {
             console.log("Error", err);
@@ -39,6 +49,8 @@ class LoginPage extends React.PureComponent {
 
     render() {
         return (
+            <>
+            <div><h1 style={{textAlign: "center"}}>Login</h1></div>
             <div className="form">
             <div className="form-toggle"></div>
             <div className="form-panel one">
@@ -57,6 +69,8 @@ class LoginPage extends React.PureComponent {
                 </div>
             </div>
         </div>
+        </>
+
         );
     }
 }
