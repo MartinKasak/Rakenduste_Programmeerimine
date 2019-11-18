@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
-const userController = require("./user.controller");
+const userController = require("./user.controller.js");
 const jwt = require("jsonwebtoken");
 
 const validationMiddleware = (req, res, next) => {
@@ -21,7 +21,7 @@ router.post("/verify", (req, res) => {
     jwt.verify( token, process.env.JWT_KEY, (err, decoded) => {
         if(err) {
             console.log(err);
-            res.status(401).send(err);
+            return res.status(401).send(err);
         }
         res.status(200).send(decoded);
     });
