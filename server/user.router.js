@@ -10,20 +10,24 @@ router.get("/api/users", (req, res) => {
     });
 });
 
-router.post("api/users/login",(req,res) => {
-    User.findOne({email: req.body.email}, (err, doc) => {
-        if(err) return handleError(err, res);
-        res.send(doc);
+router.post("/api/users/login",(req, res) => {
+    User.login(req.body)
+    .then( user => {
+        res.status(200).json(user);
+    })
+    .catch( err => {
+        return handleError(err, res);
     });
 });
 
 router.post("/api/users/signup",(req, res) => {
-    const user= new User(req.body);
-    user.save((err) =>{
-        if(err) return handleError(err, res);
-        console.log("success saving user");
+    User.signup(req.body)
+    .then( user => {
         res.status(200).json(user);
-    });
+    })
+    .catch(err => {
+        return handleError(err, res);
+    }); 
 });
 
 router.delete("/api/users", (req, res) => {

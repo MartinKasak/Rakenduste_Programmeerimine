@@ -1,5 +1,8 @@
 import React from "react";
 import "./signupform.css";
+import { Link } from "react-router-dom";
+
+
 
 class SignupPage extends React.PureComponent {
 
@@ -14,7 +17,23 @@ class SignupPage extends React.PureComponent {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log("submit", this.state);  
+        console.log("submit", this.state);
+        event.preventDefault();
+        console.log("submit", this.state); 
+        fetch("/api/users/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(this.state),
+        })
+        .then( res => {
+            console.log("response", res);
+        })
+        .catch ( err => {
+            console.log("Error", err);
+        });  
     };
 
     handleChange = (e) => {
@@ -29,16 +48,16 @@ class SignupPage extends React.PureComponent {
         return (
             <div className="signupSection">
             <div className="info">
-                <h2>Welcome to</h2>
+                <h2>SignUpPage</h2>
                 <i className="icon ion-ios-ionic-outline" aria-hidden="true"></i>
-                <p>Account registration</p>
+                <p>Konto registreerimine</p>
             </div>
             <form className="register-form"  onSubmit={this.handleSubmit}>
-                <h2>Create Account</h2>
+                <h2>Loo Konto</h2>
                 <ul className="noBullet">
                     <li>
                         <label htmlFor="email"></label>
-                        <input type="text" className="inputFields" placeholder="Email" name= {"email"} onChange = {this.handleChange}/>
+                        <input type="email" className="inputFields" placeholder="Email" name= {"email"} onChange = {this.handleChange}/>
                     </li>
                     <li>
                         <label htmlFor="password"></label>
@@ -50,8 +69,10 @@ class SignupPage extends React.PureComponent {
                     </li>
 
                     <li id="center-btn">
-                        <button className="join-btn"> submit </button>
+                        <button className="join-btn"> Submit </button>
                     </li>
+                    <p className="message">Registreerinud? <Link to={"/login"}>Login</Link></p>
+
                 </ul>
             </form>
         </div>

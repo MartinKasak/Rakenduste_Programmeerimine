@@ -10,9 +10,10 @@ const Header = () => {
         <img className="header_logo" src="/images/Tlu_logo.png"/>
         </Link>
         <div className="header_buttons">
-          <img src = {profileIcon} />
-          <div className={"header_button-text"}>Login/<br/>Register
-          </div>
+        <Link className={"header_button"} to={"/login"}>
+            <img src = {profileIcon} />
+            <div className={"header_button-text"}>Login/<br/>Register</div>
+          </Link>
           <div className={"header_button"}>
             <img src ={cartIcon} style={{height: 35}}/>
             <div className={"header_button-text"}>Cart</div>

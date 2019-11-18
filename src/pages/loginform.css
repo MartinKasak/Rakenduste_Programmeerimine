@@ -11,7 +11,7 @@
   .form {
     z-index: 15;
     position: relative;
-    background: #FFFFFF;
+    background: rgb(216, 241, 227);
     width: 600px;
     border-radius: 4px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
@@ -133,7 +133,7 @@
     margin: 0 10px 0 0;
   }
   .form-group .form-recovery {
-    color: #4285F4;
+    color: rgb(0, 0, 0);
     font-size: 12px;
     text-decoration: none;
   }

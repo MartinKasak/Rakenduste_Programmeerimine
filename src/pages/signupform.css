@@ -19,26 +19,29 @@
 }
 .info {
   width: 45%;
-  background: rgba(20, 20, 20, 0.8);
+  background: #1A2026;
   padding: 30px 0;
-  border-right: 5px solid rgba(30, 30, 30, 0.8);
+  border-right:#1A2026
 }
 .info h2 {
   padding-top: 30px;
+  padding-left:100px;
   font-weight: 300;
 }
 .info p {
   font-size: 18px;
+  padding-left:100px;
+
 }
 .info .icon {
   font-size: 8em;
   padding: 20px 0;
-  color: #0ab4b4;
+  color: #869494;
 }
 .register-form {
   width: 70%;
   padding: 30px 0;
-  background: rgba(20, 40, 40, 0.8);
+  background: #1A2026;
   transition: 0.2s;
 }
 .signupForm h2 {
@@ -49,7 +52,7 @@
   font-size: 16px;
   padding: 10px;
   width: 250px;
-  border: 1px solid #0ab4b4;
+  border: 1px solid #cbd3d3;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -62,16 +65,16 @@
   padding: 0;
 }
 .join-btn {
-  border: 1px solid #0ab4b4;
+  border: 1px solid #b0bbbb;
   background: rgba(20, 20, 20, 0.6);
   font-size: 18px;
-  color: white;
+  color: rgb(49, 46, 46);
   margin-top: 20px;
   padding: 10px 50px;
   cursor: pointer;
   transition: 0.4s;
 }
-.join-btn:hover {
+.join-btn {
   background: rgba(20, 20, 20, 0.8);
   padding: 10px 80px;
 }
