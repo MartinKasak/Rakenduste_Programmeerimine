@@ -2,40 +2,39 @@ import React from "react";
 import ReactDOM from "react-dom";
 import HomePage from "./pages/HomePage.jsx";
 import ItemPage from "./pages/ItemPage.jsx";
-import { BrowserRouter, Route, Switch } from "react-router-dom"; 
+import { BrowserRouter, Route, Switch} from "react-router-dom";
 import Header from "./components/Header.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import UserPage from "./pages/UserPage.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
-class App extends React.Component {
-  state = {
+const authDefaultValue = {
+  
     token: null,
     user: {
       email:null,
       _id: null,
       createdAt: null,
     },
-  };
-handleLogin = ({token, user}) => {
-  this.setState( {
-    user, token
-  });
 };
+
+export const AuthContext = React.createContext(authDefaultValue);
+
+
+class App extends React.Component {
+  state = authDefaultValue;
+  handleLogin = ({token, user}) => {
+    this.setState( {
+      user, token
+    });
+  };
 
   render() {
     return(
-      <BrowserRouter>
-      <Route 
-      path={"/"} 
-      render = { (props) => 
-        <Header 
-        {...props} 
-        token={this.state.token}
-        user={this.state.user} 
-       />} 
-      /> 
+      <AuthContext.Provider value = {this.state}>
+        <BrowserRouter>
+      <Route path={"/"} component = {Header} /> 
       <Switch>
       <Route path="/" exact component={HomePage} />
       <Route 
@@ -59,12 +58,12 @@ handleLogin = ({token, user}) => {
       <Route component = {NotFound} />
       </Switch>
     </BrowserRouter>
+      </AuthContext.Provider>
+      
     );
   }
 }
 
-
 const root = document.getElementById("app");
-
 
 ReactDOM.render(<App />, root);
