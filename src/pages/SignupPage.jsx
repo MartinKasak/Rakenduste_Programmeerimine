@@ -13,7 +13,7 @@ class SignupPage extends React.PureComponent {
         super(props);
         this.state = {
             email: "",
-            password:"",
+            password:""
         };
     }
 
@@ -59,7 +59,7 @@ class SignupPage extends React.PureComponent {
                 <p>Konto registreerimine</p>
             </div>
             <form className="register-form"  onSubmit={this.handleSubmit}>
-            <h2 className="header2_info">Loo konto</h2>
+                <h2 className="header2_info">Loo konto</h2>
                 <ul className="noBullet">
                     <li>
                         <label htmlFor="email"></label>
