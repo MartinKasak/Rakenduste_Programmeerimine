@@ -3,9 +3,6 @@ import "./signupform.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-
-
-
 class SignupPage extends React.PureComponent {
 
     static propTypes = {
@@ -71,7 +68,7 @@ class SignupPage extends React.PureComponent {
                     
                     <li>
                         <label htmlFor="password"></label>
-                        <input type="password" className="inputFields" placeholder="Confrim Password" name= {"confirmPassword"} onChange = {this.handleChange}/>
+                        <input type="password" className="inputFields" placeholder="Password" name= {"password"} onChange = {this.handleChange}/>
                     </li>
 
                     <li id="center-btn">
