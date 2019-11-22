@@ -3,14 +3,14 @@ import "./loginform.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
+
 class LoginPage extends React.PureComponent {
 
     static propTypes = {
         history: PropTypes.object.isRequired,
         onLogin: PropTypes.func.isRequired,
     };
-
-
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -18,7 +18,7 @@ class LoginPage extends React.PureComponent {
             password:""
         };
     }
-
+    
     handleSubmit = (event) => {
         event.preventDefault();
         console.log("submit", this.state); 
@@ -29,8 +29,7 @@ class LoginPage extends React.PureComponent {
             },
 
             body: JSON.stringify(this.state),
-        })
-        .then( res=> res.json())
+        }).then( res=> res.json())
         .then( ({token, user}) => {
             console.log("response", token, user);
             this.props.onLogin({token, user});
@@ -38,7 +37,7 @@ class LoginPage extends React.PureComponent {
         })
         .catch ( err => {
             console.log("Error", err);
-        }); 
+        });
     };
 
     handleChange = (e) => {
@@ -55,24 +54,20 @@ class LoginPage extends React.PureComponent {
             <div className="form-toggle"></div>
             <div className="form-panel one">
                 <div className="form-header">
-                    <h1>Account Login</h1>
+                    <h1>Login</h1>
                 </div>
                 <div className="form-content">
                     <form onSubmit = {this.handleSubmit}>
                         <div className="form-group"><label htmlFor="email">email</label><input type="email" name="email" value = {this.state.email} onChange = {this.handleChange}/></div>
                         <div className="form-group"><label htmlFor="password">Password</label><input type="password" name="password" value = {this.state.password} onChange = {this.handleChange} /></div>
-                        <div className="form-group"><label className="form-remember"><input type="checkbox"/>Remember Me</label><a className="form-recovery" href="#">Forgot Password?</a></div>
                         <div className="form-group"><button type="submit">Log In</button></div>
-                        <p className= "message"> Pole registreerinud? <Link to={"/signup"}>Loo konto</Link></p>
-
+                        <p className= "message"> register? <Link to={"/signup"}>Loo konto</Link></p>
                     </form>
                 </div>
             </div>
         </div>
         </>
-
         );
     }
 }
-
-export default LoginPage; 
+export default LoginPage;

@@ -17,8 +17,8 @@ router.delete("/items/:itemId", (req, res) => {
 
 router.post("/items", (req, res) => {
     const props = {
-        imgSrc: "google.com",
-        title: "phone red",
+        imgSrc: "image.com",
+        title: "phone",
         price: 200,
         category: "phones",
     };

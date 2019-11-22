@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./dropdown.css";
+import "./Dropdown.css";
 
 class Dropdown extends React.PureComponent{
     state = {
