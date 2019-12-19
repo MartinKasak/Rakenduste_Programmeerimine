@@ -1,12 +1,12 @@
 import React from "react";
-import store from "./store.js";
+import store from "./store/store.js";
 import { BrowserRouter, Route, Switch } from "react-router-dom"; 
 import Header from "./components/Header.jsx";
 import Pages from "./pages/index.jsx";
 import "./pages/main.css";
 import "typeface-roboto";
 
-console.log("store", store);
+import {Provider} from "react-redux";
 
 const authDefaultValue = {
     token: null,
@@ -28,7 +28,7 @@ class App extends React.Component {
     };
 
     render(){
-        return(
+        return(<Provider store={store}>
             <AuthContext.Provider value={this.state}>
                 <BrowserRouter>
                 <Route path={"/"} component = {Header}/>
@@ -50,6 +50,7 @@ class App extends React.Component {
                 </Switch>
                 </BrowserRouter>
             </AuthContext.Provider>
+        </Provider>
         );
     }
 }
