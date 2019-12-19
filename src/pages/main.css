@@ -1,3 +1,24 @@
+body {
+    margin: 0;
+    font-family: "Roboto", serif;
+    font-weight: 300;
+}
+
+h2 {
+    font-family: "Roboto", serif;
+    font-weight: 400;
+    margin-top: 0;
+}
+
+.text--bold {
+    font-weight: 600;
+}
+
+.text--yellow {
+    color: #ff8700;
+}
+
+
 .box {
     border-radius: 4px;
     padding: 15px;
@@ -9,4 +30,10 @@
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+} 
+
+.hover--opacity:hover {
+    cursor: pointer;
+    opacity: 0.5;
+    transition: all .2s;
 } 

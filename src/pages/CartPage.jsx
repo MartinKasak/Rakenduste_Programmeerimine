@@ -1,8 +1,11 @@
 import React from "react";
 import { getItems } from "../actions/itemsActions.js";
+import {MdDelete} from "react-icons/md";
 import PropTypes from "prop-types";
 import { FaRegTrashAlt, FaAngleRight } from "react-icons/fa";
 import "../components/cart.css";
+import FancyButton from "../components/FancyButton.jsx";
+
 
 class CartPage extends React.PureComponent {
     state = {
@@ -38,7 +41,7 @@ class CartPage extends React.PureComponent {
                             <tr><td>NetSum</td><td>1205 $</td></tr>
                             <tr>
                                 <td></td>
-                                <td><div className={"submit-button"}>Vormista ost<FaAngleRight /></div></td>
+                                <td> <td><FancyButton>Vormista ost</FancyButton></td></td>
                             </tr>
                         </tbody>
                     </table>
