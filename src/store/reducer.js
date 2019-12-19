@@ -1,5 +1,5 @@
 import {
-    ITEMS_SUCCESS, ITEM_ADDED, ITEM_REMOVED, USER_UPDATE
+    ITEMS_SUCCESS, ITEM_ADDED, ITEM_REMOVED, USER_UPDATE, TOKEN_UPDATE
 } from "./actions.js";
 import PropTypes from "prop-types";
 
@@ -20,6 +20,13 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
     switch (action.type){
+        case TOKEN_UPDATE: 
+            return {
+                ...state,
+                token: action.payload,
+
+            };
+
         case USER_UPDATE:
             return {
                 ...state,
