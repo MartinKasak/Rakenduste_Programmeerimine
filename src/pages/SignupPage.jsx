@@ -54,7 +54,7 @@ class SignupPage extends React.PureComponent {
             <div><h1 style={{textAlign: "center"}}>Signup</h1></div>
             <div className="signupSection">
             <div className="info">
-                <h2>SignUpPage</h2>
+                <h2>Konto loomine</h2>
                 <i className="icon ion-ios-ionic-outline" aria-hidden="true"></i>
                 <p>Konto registreerimine</p>
             </div>
