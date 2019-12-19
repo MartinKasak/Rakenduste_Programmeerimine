@@ -48,8 +48,12 @@ class CartPage extends React.PureComponent {
                             <tr><td>NetSum</td><td>{tax + sum}  $</td></tr>
                             <tr>
                                 <td></td>
-                                <td> <td><FancyButton>Vormista ost</FancyButton></td></td>
-                            </tr>
+                                <td>
+                                    <FancyButton onClick={() => console.log("Vormista ost")}>
+                                        Vormista ost
+                                    </FancyButton>
+                                </td>                           
+                                 </tr>
                         </tbody>
                     </table>
                 </div>

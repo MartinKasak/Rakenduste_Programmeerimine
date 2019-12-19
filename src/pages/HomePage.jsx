@@ -3,37 +3,31 @@ import ItemList from "../components/ItemList.jsx";
 import Checkbox from "../components/Checkbox.jsx";
 import PropTypes from "prop-types";
 import "./homepage.css";
-import Dropdown from "../components/Dropdown.jsx";
-import { getItems } from "../actions/itemsActions.js";
+import SortDropdown from "../components/SortDropdown.jsx";
+import {connect} from "react-redux";
+import {ItemProps} from "./CartPage.jsx";
+import {getItems} from "../store/store.js";
 
 
 class HomePage extends React.PureComponent{
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    items: PropTypes.arrayOf(PropTypes.shape(ItemProps)).isRequired,
+};
     constructor(props){
       super(props);
       this.state = {
         sortDirection: -1,
-        items: [],
         allCategories: ["phones", "laptops"],
         selectedCategories: ["phones"],
   
       };
     }
 componentDidMount(){
-  this.fetchItems();
+  this.props.dispatch(getItems());
 }
 
-fetchItems = () => {
-  getItems()
-  .then( items => {
-    console.log("items", items);
-    this.setState({
-      items
-    });
-  })
-  .catch(err => {
-    console.log("err", err);
-  });
-};
+
   handleFilterSelect = (event) => {
   const categoryName = event.target.name;
   if(this.isSelected(categoryName)){
@@ -60,7 +54,7 @@ fetchItems = () => {
     };
 
     getVisibleItems = () => {
-      return this.state.items
+      return this.props.items
       .filter(item => this.isSelected(item.category))
       .sort( (a, b) => {
         switch (this.state.sortDirection) {
@@ -132,7 +126,10 @@ fetchItems = () => {
     isSelected: PropTypes.func.isRequired,
   };
       
-     
-    
-  export default HomePage;
+  const mapStateToProps = (store) => {
+    return {
+        items: store.items,
+    };
+};
+export default connect(mapStateToProps)(HomePage); 
   
