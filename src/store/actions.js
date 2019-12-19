@@ -8,6 +8,8 @@ export const ITEMS_FAILURE = "ITEMS_FAILURE";
 
 export const ITEM_ADDED = "ITEM_ADDED";
 export const ITEM_REMOVED = "ITEM_REMOVED";
+export const USER_UPDATE = "USER_UPDATE";
+
 
 export const getItems = () => (dispatch, getState) => {
 
@@ -50,4 +52,9 @@ export const addItem = (item) => ({
 export const removeItem = (_id) => ({
     type: ITEM_REMOVED,
     payload: _id,
+});
+
+export const userUpdate = (user) => ({
+    type: USER_UPDATE,
+    payload: user,
 }); 

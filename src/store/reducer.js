@@ -1,13 +1,17 @@
 import {
-    ITEMS_SUCCESS, ITEM_ADDED, ITEM_REMOVED
+    ITEMS_SUCCESS, ITEM_ADDED, ITEM_REMOVED, USER_UPDATE
 } from "./actions.js";
+import PropTypes from "prop-types";
+
+export const UserPropTypes = {
+    _id: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired
+};
 
 const initialState = {
-    user: {
-        email: null,
-        _id: null,
-        token: null,
-    },
+    token: null,
+    user: null,
     cart: [
         // item
     ],
@@ -16,6 +20,11 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
     switch (action.type){
+        case USER_UPDATE:
+            return {
+                ...state,
+                user: action.payload,
+            };
         case ITEMS_SUCCESS: {
             return {
                 ...state,
