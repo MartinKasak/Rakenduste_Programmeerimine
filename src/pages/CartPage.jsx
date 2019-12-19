@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import "../components/cart.css";
 import FancyButton from "../components/FancyButton.jsx";
 import {connect} from "react-redux";
-import {removeItem} from "../store/store.js";
+import {removeItem} from "../store/actions.js";
 
 
 

@@ -1,5 +1,4 @@
 import React from "react";
-import store from "./store/store.js";
 import { BrowserRouter, Route, Switch } from "react-router-dom"; 
 import Header from "./components/Header.jsx";
 import Pages from "./pages/index.jsx";
@@ -7,6 +6,10 @@ import "./pages/main.css";
 import "typeface-roboto";
 
 import {Provider} from "react-redux";
+import configureStore from "./store/configureStore.js";
+import {PersistGate} from "redux-persist/integration/react";
+
+const {store, persistor} = configureStore();
 
 const authDefaultValue = {
     token: null,
@@ -29,7 +32,8 @@ class App extends React.Component {
 
     render(){
         return(<Provider store={store}>
-            <AuthContext.Provider value={this.state}>
+            <PersistGate loading={null} persistor={persistor}>
+             <AuthContext.Provider value={this.state}>
                 <BrowserRouter>
                 <Route path={"/"} component = {Header}/>
                 <Switch>
@@ -50,6 +54,7 @@ class App extends React.Component {
                 </Switch>
                 </BrowserRouter>
             </AuthContext.Provider>
+        </PersistGate>
         </Provider>
         );
     }
