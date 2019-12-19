@@ -4,7 +4,6 @@ const path = require("path");
 const PORT = process.env.PORT || 3000;
 
 const itemRouter = require("./item.router.js");
-
 const authRouter = require("./auth.router.js");
 const userRouter = require("./user.router.js");
 const database = require("./database.js");

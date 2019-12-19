@@ -88,7 +88,7 @@ componentDidMount(){
           <div>
             Items found {items.length} {this.state.selectedCategories.join(", ")}
           </div>
-          <Dropdown
+          <SortDropdown
             direction={this.state.sortDirection}
             onChange={this.handleSortDropdown}
           />
