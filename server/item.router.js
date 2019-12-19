@@ -15,7 +15,7 @@ router.delete("/items/:itemId", (req, res) => {
     });
 });
 
-router.post("/items", (req, res) => {
+router.post("/", (req, res) => {
     const props = {
         imgSrc: "image.com",
         title: "phone",
@@ -34,8 +34,9 @@ router.post("/items", (req, res) => {
     });
 });
 
-router.get("/items/:itemId", (req, res)=>{
-    Item.findById(req.params.itemId, function(err, item){
+/** Returns an item */
+router.get("/:itemId",(req, res)=>{
+        Item.findById(req.params.itemId, function(err, item){
         if(err){
             console.log("Error:", err);
             res.status(500).send(err);
@@ -45,7 +46,7 @@ router.get("/items/:itemId", (req, res)=>{
     });
 });
 
-router.get("/items", (req, res)=>{
+router.get("/",(req, res)=>{
     Item.find({}, function(err, items) {
         if(err){
             console.log("Error:", err);

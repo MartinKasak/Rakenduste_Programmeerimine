@@ -4,7 +4,8 @@ const bcrypt = require("bcrypt");
 const userSchema = new mongoose.Schema ({ 
     email: { type: String, required: true , unique: true},
     hash: { type: String, required: true },
-    createdAt: { type: Date, default: Date.now}, 
+    createdAt: { type: Date, default: Date.now },
+    cart: { type: [String], default: [] }
 });
 
 
@@ -21,6 +22,8 @@ userSchema.statics.login = function({email, password}){
                 email: userDoc.email,
                 createdAt: userDoc.createdAt,
                 _id: userDoc._id,
+                cart: userDoc.cart,
+
             });
            });
        }); 
