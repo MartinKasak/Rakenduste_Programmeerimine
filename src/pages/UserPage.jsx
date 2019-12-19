@@ -4,8 +4,8 @@ import { UserPropTypes } from "../store/reducer.js";
 import {connect} from "react-redux";
 import FancyButton from "../components/FancyButton.jsx";
 import { userUpdate, tokenUpdate } from "../store/actions.js";
-//import authConsumer from "../components/authConsumer.jsx";
-//import protectedRedirect from "../components/protectedRedirect.jsx";
+import protectedRedirect from "../components/protectedRedirect.jsx";
+
 
 
 class UserPage extends React.PureComponent {
@@ -44,6 +44,4 @@ const mapStateToProps = (store) => {
         user: store.user,
     };
 };
-
-export default connect(mapStateToProps)(UserPage);
-//export default authConsumer(protectedRedirect(UserPage)); 
+export default connect(mapStateToProps)(protectedRedirect(UserPage)); 
