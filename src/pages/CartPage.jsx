@@ -2,7 +2,6 @@ import React from "react";
 import { getItems } from "../actions/itemsActions.js";
 import {MdDelete} from "react-icons/md";
 import PropTypes from "prop-types";
-import { FaRegTrashAlt, FaAngleRight } from "react-icons/fa";
 import "../components/cart.css";
 import FancyButton from "../components/FancyButton.jsx";
 
@@ -84,7 +83,11 @@ const Row = ({title, imgSrc, category, price}) => {
                 {price} €
             </div>
             <div className={"cell cell--small cell--center"}>
-                <FaRegTrashAlt/>
+                <MdDelete 
+                    title={"Eemalda"} 
+                    className="hover--opacity" 
+                    onClick={() => onTrash(_id)}
+                />
             </div>
         </div>
     );
