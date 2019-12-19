@@ -1,0 +1,23 @@
+.btn.btn--fancy {
+    background: #d41d46;
+    font-size: large;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    float: right;
+    border: 0;
+    display: flex;
+    align-items: center;
+}
+
+.btn--fancy:hover {
+    cursor: pointer;
+    background: #f36987;
+  }
+  
+
+.btn-inner {
+    display: flex;
+    align-items: center;
+  } 
