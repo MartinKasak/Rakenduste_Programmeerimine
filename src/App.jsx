@@ -7,6 +7,8 @@ import "typeface-roboto";
 import {Provider} from "react-redux";
 import configureStore from "./store/configureStore.js";
 import {PersistGate} from "redux-persist/integration/react";
+import {ToastContainer, toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const {store, persistor} = configureStore();
 
@@ -16,9 +18,11 @@ class App extends React.Component {
     
     render(){
         return(
-        <Provider store={store}>
-            <PersistGate loading={null} persistor={persistor}>
-            <BrowserRouter>
+            <>
+            <ToastContainer enableMultiContainer position={toast.POSITION.BOTTOM_LEFT}/>
+            <Provider store={store}>
+                <PersistGate loading={null} persistor={persistor}>
+                    <BrowserRouter>
                     <Route path={"/"} component = {Header}/>
                     <Switch>
                         <Route path="/" exact component={Pages.HomePage} />
@@ -30,8 +34,9 @@ class App extends React.Component {
                         <Route component={Pages.NotFound} />
                     </Switch>
                     </BrowserRouter>
-        </PersistGate>
-        </Provider>
+                </PersistGate>
+            </Provider>
+        </>
         );
     }
 }
