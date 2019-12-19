@@ -3,8 +3,82 @@ info:
   title: TLU
   description: ""
   version: "1.0.0"
+  servers:
+  - url: localhost:3000/api/v1
+security: 
+  - bearerAuth: []
 paths:
-  /api/v1/login:
+  
+  /items/{itemId}:
+      get:
+        operationId: getItem
+        summary: Returns an item object
+        parameters:
+          - $ref: "#/components/parameters/itemIdParam"
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Item"
+          403:
+            description: Forbidden
+          500:
+            description: Error
+
+  /users/{userId}:
+    get:
+      operationId: getUser
+      summary: Returns an user object
+      security: 
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/userIdParam"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        403:
+          description: Forbidden
+        500:
+          description: Error
+
+  /users/{userId}/cart/{itemId}:
+    put:
+      operationId: addItemToCart
+      summary: Adds an item to a cart
+      security: 
+        - bearerAuth: []
+      parameters: 
+        - $ref: "#/components/parameters/userIdParam"
+        - $ref: "#/components/parameters/itemIdParam"
+      responses:
+        200:
+          description: OK
+        403:
+          description: Forbidden
+        500:
+          description: Error
+
+    delete:
+      operationId: removeItemFromCart
+      summary: Removes an item from a cart
+      parameters: 
+        - $ref: "#/components/parameters/userIdParam"
+        - $ref: "#/components/parameters/itemIdParam"
+      responses:
+        200:
+          description: OK
+        403:
+          description: Forbidden
+        500:
+          description: err
+
+  /login:
     post:
       operationId: login
       summary: User signs in
@@ -50,7 +124,7 @@ paths:
           description: bad email or password
         401:
           description: unauthorized
-  /api/v1/signup:
+  /signup:
     post:
       operationId: signup
       summary: User creates account
@@ -72,4 +146,49 @@ paths:
         422:
           description: bad email or password
         401:
-          description: unauthorized
+description: unauthorized
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Item:
+      type: object
+      properties:
+        _id:
+          type: string
+        createdAt:
+          type: string
+        price:
+          type: string
+        title:
+          type: string
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+        createdAt:
+          type: string
+        cart:
+          type: array
+          items:
+            type: string
+        email:
+          type: string
+  parameters:
+    userIdParam:
+      in: path
+      name: userId
+      schema:
+        type: string
+      required: true
+
+    itemIdParam:
+      in: path
+      name: itemId
+      schema:
+        type: string
+      required: true 
