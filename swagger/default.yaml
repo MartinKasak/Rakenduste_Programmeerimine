@@ -8,7 +8,23 @@ info:
 security: 
   - bearerAuth: []
 paths:
-  
+    /items:
+      get:
+        operationId: getItems
+        summary: Returns a list of items
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/Item"
+          403:
+            description: Forbidden
+          500:
+            description: Error
   /items/{itemId}:
       get:
         operationId: getItem
