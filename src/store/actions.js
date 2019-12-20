@@ -1,6 +1,8 @@
 // const USER_SUCCESS = "USER_SUCCESS";
 // const USER_REQUEST = "USER_REQUEST";
 // const USER_FAILURE = "USER_FAILURE";
+import * as services from "../services.js";
+
 
 export const ITEMS_SUCCESS = "ITEMS_SUCCESS";
 export const ITEMS_REQUEST = "ITEMS_REQUEST";
@@ -17,10 +19,8 @@ export const getItems = () => (dispatch, getState) => {
     if(getState().items.length > 0) return null;
 
     dispatch(itemsRequest());
-    return fetch("/api/v1/items")
-        .then(res => {
-            return res.json();
-        })
+    return services.getItems()
+
         .then(items => {
             dispatch(itemsSuccess(items));
         })

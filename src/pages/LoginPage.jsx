@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import { userUpdate } from "../store/actions";
 import {toast} from "react-toastify";
+import * as services from "../services.js";
 
 
 
@@ -26,15 +27,8 @@ class LoginPage extends React.PureComponent {
     
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log("submit", this.state); 
-        fetch("/api/v1/auth/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+        services.login(this.state)
 
-            body: JSON.stringify(this.state),
-        }).then( res=> res.json())
         .then(this.handleSuccess)
         .catch(err => {
             console.log("Error", err);
