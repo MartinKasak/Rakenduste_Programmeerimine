@@ -8,7 +8,22 @@ info:
 security: 
   - bearerAuth: []
 paths:
-  
+    /items:
+      get:
+        operationId: getItems
+        summary: Returns a list of items
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/Item"
+
+          500:
+            description: Error
   /items/{itemId}:
       get:
         operationId: getItem
@@ -22,8 +37,7 @@ paths:
               application/json:
                 schema:
                   $ref: "#/components/schemas/Item"
-          403:
-            description: Forbidden
+
           500:
             description: Error
 
@@ -78,7 +92,7 @@ paths:
         500:
           description: err
 
-  /login:
+  /auth/login:
     post:
       operationId: login
       summary: User signs in
@@ -124,7 +138,7 @@ paths:
           description: bad email or password
         401:
           description: unauthorized
-  /signup:
+  /auth/signup:
     post:
       operationId: signup
       summary: User creates account

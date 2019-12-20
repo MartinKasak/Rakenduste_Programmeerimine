@@ -3,8 +3,8 @@
     flex-wrap: wrap;
 }
 
-.itemPage-footer{
+.itemPage-footer {
     display: flex;
     justify-content: flex-end;
-    flex-basis: 100%; 
-}
+    flex-basis: 100%;
+} 

@@ -6,13 +6,15 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ItemProps} from "../pages/CartPage.jsx";
 import { UserPropTypes } from "../store/reducer.js";
+import * as selectors from "../store/selectors.js";
+
 
 
 const Header = ({user, cart}) => {
     return (
       <div className = "header">
         <Link to ={"/"}>
-          <img className="header_logo" src="/static/images/Tlu_logo.png"/>
+          <img className="header_logo" src="/static/images/tlu_logo.jpg"/>
         </Link>
         <div className="header_buttons">
                 {user && <WelcomeIcon user={user}/>}
@@ -66,9 +68,8 @@ const Header = ({user, cart}) => {
 
   const mapStateToProps = (store) => {
     return {
-        cart: store.cart,
-        user: store.user,
-
+      cart: selectors.getCart(store),
+      user: selectors.getUser(store)
     };
 };
 

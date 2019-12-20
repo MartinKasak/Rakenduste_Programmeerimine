@@ -11,7 +11,6 @@
 }
 
 .item {
-    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.2); /* main.css */
     text-decoration: none;
     min-width: 200px;
     width: 24%;
@@ -95,15 +94,23 @@
     color: #333;
     font-weight: bold;
     font-size: 16px;
+    background: #d41d46;
+    padding: 5px 10px;
+    color: white;
+    border-radius: 5px;
 }
 
 .item__footer {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
+
 }
 
 .item__reviews {
+    display: flex;
+
     color: #999;
-    font-size: 12px;
+    font-size: 14px;
 }

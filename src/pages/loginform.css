@@ -12,7 +12,7 @@
     z-index: 15;
     position: relative;
     background: rgb(216, 241, 227);
-    width: 600px;
+    width: 1000px;
     border-radius: 4px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
@@ -22,11 +22,11 @@
   .form-toggle {
     z-index: 10;
     position: absolute;
-    top: 60px;
-    right: 60px;
+    top: 600px;
+    right: 600px;
     background: #FFFFFF;
-    width: 60px;
-    height: 60px;
+    width: 600px;
+    height: 600px;
     border-radius: 100%;
     transform-origin: center;
     transform: translate(0, -25%) scale(0);
@@ -41,15 +41,15 @@
     top: 50%;
     left: 50%;
     width: 30px;
-    height: 4px;
+    height: 40px;
     background: #4285F4;
-    transform: translate(-50%, -50%);
+    transform: translate(-20%, -20%);
   }
   .form-toggle:before {
-    transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-20%, -20%) rotate(45deg);
   }
   .form-toggle:after {
-    transform: translate(-50%, -50%) rotate(-45deg);
+    transform: translate(-20%, -20%) rotate(-45deg);
   }
   .form-toggle.visible {
     transform: translate(0, -25%) scale(1);
