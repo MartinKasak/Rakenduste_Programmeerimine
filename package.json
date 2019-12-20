@@ -4,11 +4,12 @@
   "scripts": {
     "build": "webpack",
     "start": "node server/server.js",
-    "start:prelive": "npm run build && PORT=3001 && npm run start",
+    "start:prelive": "npm run build && set PORT=3001 npm run start",
     "start:backend": "nodemon ./server/server.js",
     "start:frontend": "webpack-dev-server --open --mode=\"development\"",
     "lint": "eslint --fix src",
-    "lint2": "eslint --version"
+    "lint2": "eslint --version",
+    "heroku": "git push heroku master"
   },
   "dependencies": {
     "@babel/polyfill": "^7.7.0",
@@ -48,6 +49,7 @@
     "eslint-loader": "^3.0.2",
     "eslint-plugin-react": "^7.16.0",
     "file-loader": "^5.0.2",
+    "nodemon": "^2.0.2",
     "prop-types": "^15.7.2",
     "style-loader": "^1.0.0",
     "webpack": "^4.39.3",

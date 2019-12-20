@@ -3,9 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const Item = require("./item.model.js");
 
-/**
- * Deletes an item
- */
+
 router.delete("/items/:itemId", (req, res) => {
     Item.deleteOne({"_id" : mongoose.Types.ObjectId(req.params.itemId)}, (err) => {
         if(err) {
@@ -18,7 +16,7 @@ router.delete("/items/:itemId", (req, res) => {
 });
 
 /**
- * Create a new item
+ * Create    new item
  */
 router.post("/", (req, res) => {
     const props = {

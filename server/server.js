@@ -35,8 +35,6 @@ database.connect()
       console.log("Error on database connection: ", err);
   });
 
-
-// Old code below, possibly unused
 const path = require("path");
 
 app.get("/", (req, res) => {

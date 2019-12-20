@@ -47,28 +47,33 @@ class LoginPage extends React.PureComponent {
         this.props.dispatch(tokenUpdate(token));
         this.props.history.push(`/users/${user._id}`);
     };
-    render() {
+    render(){
         return (
             <>
-            <div><h1 style={{textAlign: "center"}}>Login</h1></div>
-            <div className="form">
-            <div className="form-toggle"></div>
-            <div className="form-panel one">
-                <div className="form-header">
-                    <h1>Login</h1>
-                </div>
-                <div className="form-content">
-                    <form onSubmit = {this.handleSubmit}>
-                        <div className="form-group"><label htmlFor="email">email</label><input type="email" name="email" value = {this.state.email} onChange = {this.handleChange}/></div>
-                        <div className="form-group"><label htmlFor="password">Password</label><input type="password" name="password" value = {this.state.password} onChange = {this.handleChange} /></div>
-                        <div className="form-group"><button type="submit">Log In</button></div>
-                        <p className= "message"> register? <Link to={"/signup"}>Loo konto</Link></p>
+                <div><h1 style={{textAlign: "center"}}>Login</h1></div>
+                <div className="form">
+                    <form className="login-form" onSubmit={this.handleSubmit}>
+                        <input 
+                            type="email" 
+                            placeholder="email" 
+                            name="email" 
+                            value={this.state.email}
+                            onChange={this.handleChange} />
+                        <input 
+                            type="password" 
+                            placeholder="password" 
+                            name="password" 
+                            value={this.state.password}
+                            onChange={this.handleChange} />
+                        <button>login</button>
+                        <p className="message">Not registered? <Link to={"/signup"}>Create an account</Link></p>
                     </form>
                 </div>
-            </div>
-        </div>
-        </>
+            </>
         );
     }
+    
+    
 }
-export default connect()(LoginPage); 
+export default connect()(LoginPage);
+

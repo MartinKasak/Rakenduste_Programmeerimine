@@ -13,6 +13,7 @@ export const ITEM_ADDED = "ITEM_ADDED";
 export const ITEM_REMOVED = "ITEM_REMOVED";
 export const USER_UPDATE = "USER_UPDATE";
 export const TOKEN_UPDATE = "TOKEN_UPDATE";
+
 export const removeItem = (itemId) => (dispatch, getState) => {
     const store = getState();
     const token = selectors.getToken(store);
