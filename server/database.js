@@ -17,7 +17,7 @@ const connect = () => {
     });    
 };
 
-function migrate(){ // async, can't know when all are saved
+function migrate(){ 
     Item.count({}, (err, countNo) => {
         if(err) throw err;
         if(countNo > 0) {
@@ -28,11 +28,11 @@ function migrate(){ // async, can't know when all are saved
     });
 }
 
-function deleteAllItems(){
-    Item.deleteMany({}, (err, doc) => {
-        console.log("err", err, "doc", doc);
-    });
-}
+//function deleteAllItems(){
+  //  Item.deleteMany({}, (err, doc) => {
+  //      console.log("err", err, "doc", doc);
+    //});
+//}
 
 function saveAllItems(){
     console.log("Migration started");
@@ -44,7 +44,7 @@ function saveAllItems(){
                 console.log(err);
                 throw new Error("Item save error");
             }
-            console.log("Save successful")
+            console.log("Save successful");
         });
     });
 }
