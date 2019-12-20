@@ -7,7 +7,8 @@ export const getUser = (store) => {
 };
 
 export const getCart = (store) => {
-    return store.cart;
+    if(!store.user) return [];
+    return store.user.cart;
 };
 
 export const getItems = (store) => {

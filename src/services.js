@@ -37,7 +37,7 @@ export const addItemToCart = ({userId, itemId, token}) => {
     })
     .then(res => {
         if(!res.ok) throw "addItemToCart failed";
-        return res.json();
+        return true;
     });
 };
 
@@ -50,7 +50,7 @@ export const removeItemFromCart = ({userId, itemId, token}) => {
     })
     .then(res => {
         if(!res.ok) throw "removeItemFromCart failed";
-        return res.json();
+        return true;
     });
 };
 

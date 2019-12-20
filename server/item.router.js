@@ -30,7 +30,7 @@ router.post("/", (req, res) => {
             return;
         }
         console.log("Success create!");
-        res.send(201);
+        res.send(200);
     });
 });
 
@@ -39,10 +39,10 @@ router.get("/:itemId",(req, res)=>{
         Item.findById(req.params.itemId, function(err, item){
         if(err){
             console.log("Error:", err);
-            res.status(500).send(err);
+            res.status(500).send("Error on cart save");
             return;
         }
-        res.send(item);
+        res.send(200);
     });
 });
 
