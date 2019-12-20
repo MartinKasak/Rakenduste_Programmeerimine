@@ -76,26 +76,28 @@ componentDidMount(){
       const items = this.getVisibleItems();
       return (
         <>
-        <div className={"body-wrapper"}>
-          <div className={"filters-wrapper"}>
-            <ItemFilters
+        <div className={"hero"}></div>
+            <div style={{margin: "0px auto", maxWidth: "1000px"}}>
+                <div className={"display-flex-between box box--shadow"} style={{margin: "0.3em"}}>
+                    <div>
+            <CategoriesFilter 
               allCategories={this.state.allCategories}
               handleDropdown={this.handleFilterSelect}
               isSelected={this.isSelected}
             />
           </div>
-        <div className={"items-header-wrapper"}>
           <div>
-            Items found {items.length} {this.state.selectedCategories.join(", ")}
+          {visibleItems.length} items found for {this.state.selectedCategories.join(", ")}
           </div>
+          <div className={"custom-select-wrapper"} style={{marginLeft: "0.4em"}}>
           <SortDropdown
             direction={this.state.sortDirection}
             onChange={this.handleSortDropdown}
           />
         </div>
-        <ItemList items={items}/>
         </div>
-        
+        <ItemsList items={visibleItems}/>
+            </div>
         </>
       );
     }
