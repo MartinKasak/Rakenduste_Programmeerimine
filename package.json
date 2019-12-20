@@ -4,7 +4,7 @@
   "scripts": {
     "build": "webpack",
     "start": "node server/server.js",
-    "start:prelive": "npm run build && set PORT=3001 npm run start",
+    "start:prelive": "npm run build && set PORT=3001 && npm run start",
     "start:backend": "nodemon ./server/server.js",
     "start:frontend": "webpack-dev-server --open --mode=\"development\"",
     "lint": "eslint --fix src",
