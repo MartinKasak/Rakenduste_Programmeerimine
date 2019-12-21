@@ -81,3 +81,19 @@ export const signup = ({email, password}) => {
         return res.json();
     });
 }; 
+
+export const userUpdate = ({email}) => {
+    return fetch(`${basePath}/users`, {
+        method: "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify( {email})
+    })
+
+    .then(res => {
+        if(!res.ok) throw "userUpdate failed";
+        return true;
+    });
+};
+ 

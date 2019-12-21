@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema ({
     hash: { type: String, required: true },
     createdAt: { type: Date, default: Date.now },
     cart: { type: [String], default: [] }
-});
+}); 
 
 
 userSchema.statics.login = function({email, password}){

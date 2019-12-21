@@ -37,6 +37,20 @@ router.put("/:userId/cart/:itemId", (req, res) => {
     });
 });
 
+/** Add user  */
+router.post("/", (req, res) => {
+    const user1 = new User(req.body);
+	user1.save( err => {
+        if(err){
+			console.log("Error", err);
+			res.send(500);
+			return;
+		}
+		console.log("Success create");
+		res.send(201);
+	});
+});
+ 
 /** Remove an item from a cart */
 router.delete("/:userId/cart/:itemId", (req, res) => {
     const index = req.user.cart.findIndex(itemId => itemId === req.item._id.toString());
@@ -50,13 +64,15 @@ router.delete("/:userId/cart/:itemId", (req, res) => {
         res.send(200);
     });
 });
-
+/**get all users**/
 router.get("/", (req, res) => {
     User.find({}, (err, docs) => {
         if(err) return handleError(err, res);
         res.status(200).json(docs);
     });
 });
+
+
 
 router.delete("/", (req, res) => {
     User.deleteMany({}, (err, docs) => {
