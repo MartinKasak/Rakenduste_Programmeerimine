@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Item = require("./item.model.js");
+const database = require("./database.js");
 
 const DB_URL = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@cluster0-pmrpm.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
@@ -28,15 +29,15 @@ function migrate(){
     });
 }
 
-function deleteAllItems(){
-    Item.deleteMany({}, (err, doc) => {
-       console.log("err", err, "doc", doc);
-    });
-}
+//function deleteAllItems(){
+  //  Item.deleteMany({}, (err, doc) => {
+  //      console.log("err", err, "doc", doc);
+    //});
+//}
 
 function saveAllItems(){
     console.log("Migration started");
-    const items = DB.getItems();
+    const items = database.getItems();
     items.forEach(item => {
         const document = new Item(item);
         document.save ((err) => {
