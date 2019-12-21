@@ -5,7 +5,6 @@ if(process.env.NODE_ENV !== "production"){
 const express = require("express");
 const app = express();
 const apiRouter = require("./apiRouter.js");
-
 const database = require("./database.js");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3000;
