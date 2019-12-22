@@ -71,11 +71,11 @@ class CartPage extends React.PureComponent {
 
 
     render(){
-        const {sum, tax} = this.calcNumbers();
+        const {sum} = this.calcNumbers();
         return (
             <>
                 <Modal open={this.state.isModalOpen} onClose={this.handleModal}>
-                    <Stripe/>
+                    <Stripe sum={sum}/>
                 </Modal>
                 
                 <div className={"spacer"}>
@@ -89,8 +89,7 @@ class CartPage extends React.PureComponent {
                         <table>
                             <tbody>
                                 <tr><td>Vahesumma</td><td>{sum} €</td></tr>
-                                <tr><td>Maksud</td><td>{tax} €</td></tr>
-                                <tr><td>Kokku</td><td>{tax + sum} €</td></tr>
+                                <tr><td>Kokku</td><td>{sum} €</td></tr>
                                 <tr>
                                     <td></td>
                                     <td>
