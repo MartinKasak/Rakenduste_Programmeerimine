@@ -1,10 +1,11 @@
-/** Development environment. In Heroku we don't use .env file */
 if(process.env.NODE_ENV !== "production"){
   require("dotenv").config();
 }
+
 const express = require("express");
 const app = express();
 const apiRouter = require("./apiRouter.js");
+
 const database = require("./database.js");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3000;
@@ -34,7 +35,7 @@ database.connect()
       console.log("Error on database connection: ", err);
   });
 
-const path = require("path");
+const path = require("path");  
 
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
