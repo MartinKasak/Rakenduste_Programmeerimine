@@ -88,8 +88,11 @@ function handleError(err,res) {
     res.send(500);
 }
 
-router.post("/:userId/checkout", authMiddleware, (req, res) => {
-    console.log(req.body);
+router.post("/:userId/checkout", authMiddleware, async(req, res) => {
+    //console.log(req.body);
+    console.log("user", req.user);
+    const {error, amount} = await req.user.getCartAmount();
+    console.log({error, amount});
     res.send(200);
 });
 
