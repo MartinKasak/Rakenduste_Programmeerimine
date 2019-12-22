@@ -73,7 +73,7 @@ router.get("/", (req, res) => {
 });
 
 
-
+/*Delete all users*/
 router.delete("/", (req, res) => {
     User.deleteMany({}, (err, docs) => {
         if(err) return handleError(err, res);
@@ -88,5 +88,9 @@ function handleError(err,res) {
     res.send(500);
 }
 
+router.post("/:userId/checkout", authMiddleware, (req, res) => {
+    console.log(req.body);
+    res.send(200);
+});
 
 module.exports = router; 
