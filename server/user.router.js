@@ -4,6 +4,7 @@ const User = require("./user.model.js");
 const Item = require("./item.model.js");
 const {authMiddleware} = require("./middlewares.js");
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
+const Payment = require("./payments.model.js");
 
 router.param("userId", (req, res, next, userId) => {
     User.findById(userId, (err, user) => {
@@ -89,6 +90,17 @@ function handleError(err,res) {
     console.log(err);
     res.send(500);
 }
+
+router.get("/:userId/payments", authMiddleware, (req, res)=>{
+    Payment.getUserPayments(req.user._id)
+    .then(docs =>{
+        res.send(docs);
+    })
+    .catch(err =>{
+        console.log(err);
+        res.send(500);
+    });
+});
 
 router.post("/:userId/checkout", authMiddleware, async(req, res) => {
     //console.log(req.body);

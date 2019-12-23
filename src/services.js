@@ -97,6 +97,33 @@ export const checkout = ({stripeToken, userId, token}) => {
     });
 }; 
 
+export const getPayments = ({userId, token}) => {
+    return fetch(`${basePath}/users/${userId}/payments`, {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`
+
+        },
+    })
+    .then(res => {
+        if(!res.ok) throw "getPayments failed";
+        return res.json();
+    });
+};  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const userUpdate = ({email}) => {
     return fetch(`${basePath}/users`, {
         method: "POST",
