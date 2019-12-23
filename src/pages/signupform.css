@@ -4,7 +4,6 @@
 }
 
 .signupSection {
-  background: url(https://source.unsplash.com/TV2gg2kZD1o/1600x800);
   background-repeat: no-repeat;
   position: absolute;
   top: 50%;
@@ -39,10 +38,13 @@
   color: #869494;
 }
 .register-form {
-  width: 70%;
-  padding: 30px 0;
-  background: #1A2026;
-  transition: 0.2s;
+  position: relative;
+  z-index: 1;
+  background: #6e25ff;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
 }
 .signupForm h2 {
   font-weight: 300;

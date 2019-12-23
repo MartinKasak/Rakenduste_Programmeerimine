@@ -71,7 +71,7 @@ class UserPage extends React.PureComponent {
         );
     }
 }
-
+ 
 const mapStateToProps = (store) => {
     return {
         user: selectors.getUser(store),

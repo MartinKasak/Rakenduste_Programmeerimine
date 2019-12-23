@@ -65,7 +65,7 @@ class StripeForm extends React.PureComponent{
                 Card details
                 <CardElement style={{base: {fontSize: "18px"}}} />
                 </label>
-            <button className= {"stripe__button"}>Pay {this.props.sum}EUR </button>
+            <button className= {"stripe__button"}>Pay {this.props.sum} EUR </button>
             </form>
         );
     }
