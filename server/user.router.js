@@ -105,7 +105,10 @@ router.get("/:userId/payments", authMiddleware, (req, res)=>{
 router.post("/:userId/checkout", authMiddleware, async(req, res) => {
     //console.log(req.body);
     const {error, amount} = await req.user.getCartAmount();
-    if(error) return res.send(500);
+    if(error) {
+        console.log("error");
+        return res.send(500);
+      }
     req.user.createPayment(amount)
     .then(()=> {
         return req.user.clearCart();
