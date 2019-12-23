@@ -90,10 +90,10 @@ export const checkout = ({stripeToken, userId, token}) => {
             "Authorization": `Bearer ${token}`
 
         },
-        body: JSON.stringify({stripeToken})
+        body: JSON.stringify(stripeToken)
     })
     .then(res => {
-        if(!res.ok) throw "checkout failed";
+        if(!res.ok) throw "checkout faileed";
     });
 }; 
 
