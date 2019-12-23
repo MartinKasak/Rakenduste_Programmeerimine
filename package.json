@@ -11,7 +11,6 @@
     "lint2": "eslint --version",
     "heroku": "git push heroku master",
     "test": "jest"
-
   },
   "dependencies": {
     "@babel/polyfill": "^7.7.0",
@@ -49,6 +48,8 @@
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.2.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.5.1",
     "eslint-loader": "^3.0.2",
     "eslint-plugin-react": "^7.16.0",
@@ -56,10 +57,10 @@
     "jest": "^24.9.0",
     "nodemon": "^2.0.2",
     "prop-types": "^15.7.2",
+    "react-test-renderer": "^16.12.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8",
     "webpack-dev-server": "^3.8.1"
   }
-
 }
