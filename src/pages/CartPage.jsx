@@ -69,13 +69,16 @@ class CartPage extends React.PureComponent {
         });
     };
 
+    handleSubmit = () =>{
+        this.handleModal();
+    };
 
     render(){
         const {sum} = this.calcNumbers();
         return (
             <>
                 <Modal open={this.state.isModalOpen} onClose={this.handleModal}>
-                    <Stripe sum={sum}/>
+                    <Stripe sum={sum} onSubmit={this.handleSubmit}/>
                 </Modal>
                 
                 <div className={"spacer"}>
@@ -85,22 +88,25 @@ class CartPage extends React.PureComponent {
                             rows={this.state.cartItems}
                         />
                     </div>
-                    <div className={"box cart__summary"}>
-                        <table>
-                            <tbody>
-                                <tr><td>Vahesumma</td><td>{sum} €</td></tr>
-                                <tr><td>Kokku</td><td>{sum} €</td></tr>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <FancyButton onClick={this.handleModal}>
-                                            Vormista ost
-                                        </FancyButton>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    {this.state.cartItems.length > 0 && 
+                        <div className={"box cart__summary"}>
+                            <table>
+                                <tbody>
+                                    <tr><td>Vahesumma</td><td>{sum} €</td></tr>
+                                    <tr><td>Kokku</td><td>{sum} €</td></tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <FancyButton onClick={this.handleModal}>
+                                                Vormista ost
+                                            </FancyButton>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                   
                 </div>
             </>
         );

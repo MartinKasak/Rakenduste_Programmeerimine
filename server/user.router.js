@@ -64,6 +64,7 @@ router.delete("/:userId/cart/:itemId", (req, res) => {
         res.send(200);
     });
 });
+
 /**get all users**/
 router.get("/", (req, res) => {
     User.find({}, (err, docs) => {
@@ -90,10 +91,19 @@ function handleError(err,res) {
 
 router.post("/:userId/checkout", authMiddleware, async(req, res) => {
     //console.log(req.body);
-    console.log("user", req.user);
     const {error, amount} = await req.user.getCartAmount();
-    console.log({error, amount});
-    res.send(200);
+    if(error) return res.send(500);
+    req.user.createPayment(amount)
+    .then(()=> {
+        return req.user.clearCart();
+    })
+    .then(() => {
+        res.send(200);
+    }) 
+    .catch(() => {    
+        res.send(500);
+    });
 });
+
 
 module.exports = router; 

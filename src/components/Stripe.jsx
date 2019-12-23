@@ -4,19 +4,22 @@ import {Elements, CardElement} from "react-stripe-elements";
 import "./stripe.css";
 import {injectStripe} from "react-stripe-elements";
 import PropTypes from "prop-types";
-import * as services from "../services";
-import * as selectors from "../store/selectors";
+import * as services from "../services.js";
+import * as selectors from "../store/selectors.js";
 import {connect} from "react-redux";
+import * as actions from "../store/actions.js";
 
 class Stripe extends React.PureComponent{
     static propTypes = {
         sum: PropTypes.number.isRequired,
+        onSubmit:PropTypes.func.isRequired,
     };
+
     render(){
         return (
         <StripeProvider apiKey="pk_test_QDWe5y1OWEKu5gffJPvtmpeg00hQ5nbiGh">
         <Elements>
-            <InjectedStripeForm sum={this.props.sum}/>
+            <InjectedStripeForm sum={this.props.sum} onSubmit={this.props.onSubmit}/>
         </Elements>
         </StripeProvider>
         );
@@ -26,12 +29,13 @@ class Stripe extends React.PureComponent{
 export default Stripe; 
 
 class StripeForm extends React.PureComponent{
-
     static propTypes = {
         stripe: PropTypes.object.isRequired,
         sum:PropTypes.number.isRequired,
         userId:PropTypes.string.isRequired,
         token:PropTypes.string.isRequired, 
+        dispatch:PropTypes.func.isRequired,
+        onSubmit:PropTypes.func.isRequired,
     }; 
 
     handleSubmit = (event) => {
@@ -44,8 +48,10 @@ class StripeForm extends React.PureComponent{
             }
             services.checkout({stripeToken: token, userId: this.props.userId, token: this.props.token})
             .then(x => {
-                console.log("checkout", x);
-            })
+                console.log("checkoeeut", x);
+                this.props.dispatch(actions.refreshUser());
+                this.props.onSubmit();
+            }) 
             .catch(err => {
                 console.error(err);
             });

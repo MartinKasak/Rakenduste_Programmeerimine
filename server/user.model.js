@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const Item = require("./item.model");
+const Item = require("./item.model.js");
+const Payment = require("./payments.model.js");
  
 const userSchema = new mongoose.Schema ({ 
     email: { type: String, required: true , unique: true},
     hash: { type: String, required: true },
     createdAt: { type: Date, default: Date.now },
-    cart: { type: [String], default: [] }
+    cart: { type: [String], default: [] },
 }); 
 
 
@@ -45,12 +46,40 @@ userSchema.statics.signup = function({email, password}){
 };
 
 userSchema.methods.getCartAmount = async function() {
-    console.log("this", this);
-    console.log("this.cart", this.cart);
     const items= await Item.getItems(this.cart);
-    console.log("items", items);
     const amount = items.reduce((acc, item) =>  acc + item.price, 0);
     return {error:null, amount};
+};
+
+userSchema.methods.createPayment = function(amount) {
+    const payment = new Payment({
+        amount,
+        userId:this._id,
+        cart:this.cart,
+    });
+    return new Promise((resolve, reject)=>{
+        payment.save((err) =>{
+            if(err){
+                console.log(err);
+                return reject("failed to create a payment");
+            }
+            resolve("Success");
+        });
+    });
+};
+
+
+userSchema.methods.clearCart = function() {
+    return new Promise((resolve, reject)=>{
+    this.cart = [];
+    this.save(err =>{
+        if(err){
+            console.log(err);
+            return reject("Failed to clear cart");
+        }
+        return resolve("Success");
+        });
+    });
 };
 
 const User = mongoose.model("User", userSchema);
