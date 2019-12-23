@@ -53,7 +53,7 @@ export const addItem = (item) => (dispatch, getState) => {
     const userId = selectors.getUser(store)._id;
     services.addItemToCart({itemId, token, userId})
     .then(() => {
-        toast.success("Toode edukalt lisatud! :)");
+        toast.success("Toode lisatud!");
         dispatch({
             type: ITEM_ADDED,
             payload: itemId,

@@ -58,6 +58,8 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 25px;
+    color:#067a1f;
 }
 
 .field {

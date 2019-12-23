@@ -5,8 +5,8 @@ import "./Dropdown.css";
 const SortDropdown = ({direction, onChange}) => (
     <div>
         <select value={direction} onChange={onChange} className="mdl-selectfield">
-            <option value={-1}>Price descending</option>
-            <option value={1}>Price ascending</option>
+            <option value={-1}>Kallim ennem</option>
+            <option value={1}>Odavam ennem</option>
         </select>
     </div>
 );

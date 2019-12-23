@@ -8,3 +8,16 @@
     justify-content: flex-end;
     flex-basis: 100%;
 } 
+
+.itemPage-left{
+    padding: 20px;
+}
+.itemPage-content{
+    padding:30px;
+}
+
+.itemPage-text{
+    color:orange;
+    font-size: 20px;
+    font-weight: 1000;
+}

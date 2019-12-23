@@ -30,13 +30,13 @@ const ItemList = (props) => {
   const Item = (props) => {
       return (
         <Link to={`/items/${props.id}`} className={"item"}>
-            <div className = {"item_img-wrapper"}>
+            <div className = {"item__img-wrapper"}>
                 <img src = {props.imgSrc}/>
             </div>
-            <div className={"item_description"}>
-                <div className = "item_title">{props.title}</div>
-                <div className={"item_footer"}>
-                    <div className = "item_price">{props.price}</div>
+            <div className={"item__description"}>
+                <div className = "item__title">{props.title}</div>
+                <div className={"item__footer"}>
+                    <div className = "item__price">{props.price}€</div>
                     
                 </div>
             </div>

@@ -1,10 +1,10 @@
 
 select {
-  font-family: inherit;
+  font-family: 'Times New Roman', Times, serif;
   background-color: transparent;
   padding: 4px 0;
-  font-size: 16px;
-  color: rgb(33, 150, 243);
+  font-size: 20px;
+  color: rgb(5, 11, 94);
   border: none;
   border-bottom: 1px solid rgba(0,0,0, 0.12);
 }

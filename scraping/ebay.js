@@ -5,7 +5,7 @@
     const titleClass = "s-item__title";
     const priceClass = "s-item__price";
   
-    const category = document.title.split("|")[0].trim()
+    const category = document.title.split("|")[0].trim();
 
     const items = document.getElementsByClassName(itemContainerClass);
   
@@ -29,7 +29,7 @@
         title,
         price,
         category,
-      })
+      });
   
     });
   
