@@ -26,4 +26,4 @@ it("should trigger callback when the button is clicked", () =>{
     );
     component.find(".btn").simulate("click");
     expect(x).toBe(1);
-  });
+});
