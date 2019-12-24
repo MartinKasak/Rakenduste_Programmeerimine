@@ -15,28 +15,24 @@ router.delete("/items/:itemId", (req, res) => {
     });
 });
 
-/**
- * Create    new item
+
+/*
+Loome uue itemi arvestus 9 dets
  */
-router.post("/", (req, res) => {
-    const props = {
-        imgSrc: "example.invalid",
-        title: "phone red",
-        price: 200,
-        category: "phones"
-    };
-    
-    const item1 = new Item(props);
-    item1.save (err => {
+
+router.post("/", (req, res) =>{
+    const newItem = new Item(req.body);
+    newItem.save (err => {
         if(err){
             console.log("Error: ", err);
             res.sendStatus(500);
             return;
         }
-        console.log("Success createItem");
+        console.log("Success createdItem");
         res.sendStatus(201);
     });
 });
+
 
 /** Returns an item */
 router.get("/:itemId",(req, res)=>{

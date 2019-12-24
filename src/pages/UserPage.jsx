@@ -7,6 +7,7 @@ import { tokenUpdate, userUpdate } from "../store/actions.js";
 import protectedRedirect from "../components/protectedRedirect.jsx";
 import * as selectors from "../store/selectors.js";
 import * as  services from "../services.js";
+import { toast } from "react-toastify";
 
 
 class UserPage extends React.PureComponent {
@@ -18,9 +19,18 @@ class UserPage extends React.PureComponent {
         userId:PropTypes.string.isRequired,
 
     };
-    state = {
-        payments: [],
-    };
+    
+    constructor(props){
+        super(props);
+         this.state = {
+            payments: [],
+            title:"",
+            price:"",
+            imgSrc:"",
+            category:"",
+        };
+        }
+    
 
     componentDidMount(){
         const {userId, token} = this.props;
@@ -33,19 +43,36 @@ class UserPage extends React.PureComponent {
         });
     }
 
-
     handleLogout = () => {
         this.props.dispatch(userUpdate(null));
         this.props.dispatch(tokenUpdate(null));
     }
     
+    handleSubmit = (event) => {
+        event.preventDefault();
+        services.lisaItem(this.state)
+            .then( () => {
+          toast.success("Toode Lisatud");
+    })
+        .catch(err =>{
+          console.log(err);
+          toast.error("Error!");
 
+    });
+  };
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value,
+        });
+        console.log(this.state);
+    };
 
     render() {
         return (
             <div className="spacer">
                 <div className="box">
-                    <div style={{display:"flex", justifyContent: "space-around"}}>
+                    <div style={{display:"flex", justifyContent: "flex-end"}}>
                         <div className="field">
                             {this.props.user.email}
                         </div>
@@ -53,8 +80,24 @@ class UserPage extends React.PureComponent {
                             {this.props.user.createdAt}
                         </div>
                         <FancyButton onClick={this.handleLogout}>Logi välja</FancyButton>
+                        <br>
+                        </br>
+                         
                     </div>
+                    <div>
+                        <br></br>
+                    </div>
+                    
+                    <form className="lisaItem" onSubmit = {this.handleSubmit}>
+                        <input type="title" placeholder="Toote nimetus" name = {"title"} onChange = {this.handleChange}/>
+                        <input type="price" placeholder="Hind"name = {"price"} onChange = {this.handleChange}/>
+                        <input type="imgSrc" placeholder="Pildi URL" name = {"imgSrc"} onChange = {this.handleChange}/>
+                        <input type="category" placeholder="phones/laptops"name = {"category"} onChange = {this.handleChange}/>                        
+                        <button>Loo uus toode</button>
+                    </form> 
                 </div>
+                <br></br>
+                <h2  align="center">Kasutaja Ostuajalugu</h2>
                 <div className={"box"}>
                 {this.state.payments.map(payment  =>{
                     return (

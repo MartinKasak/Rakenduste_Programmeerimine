@@ -21,9 +21,13 @@ h2 {
 
 .box {
     border-radius: 5px;
-    padding: 15px;
+    padding-left: 55px;
+    padding-right: 55px;
     background: white;
     border: 1px solid #3333332b;
+    justify-content: center;
+    text-align: center;
+
 
 
 }
@@ -34,7 +38,6 @@ h2 {
 .spacer {
     width: 90%;
     max-width: 1200px;
-    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -62,8 +65,10 @@ h2 {
     color:#067a1f;
 }
 
+
 .field {
-    padding: 5px 15px;
+    padding-left: 15px;
+    padding-right: 15px;
     border: 1px solid #0000002e;
     background: #80808017;
     border-radius: 5px;

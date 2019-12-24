@@ -111,17 +111,20 @@ export const getPayments = ({userId, token}) => {
     });
 };  
 
-
-
-
-
-
-
-
-
-
-
-
+/*Arvestused*/
+export const lisaItem = ({imgSrc, title, price, category}) => {
+    return fetch(`${basePath}/items`, {
+        method: "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify( {imgSrc,title,price,category})
+    })
+    .then(res => {
+        if(!res.ok) throw "Toote lisamine ebaõnnestus";
+        return true;
+    });
+};
 
 
 export const userUpdate = ({email}) => {
