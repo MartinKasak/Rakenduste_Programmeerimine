@@ -41,7 +41,7 @@ userSchema.statics.signup = function({email, password}){
                 if(err) return reject(err);
                 resolve(user);
             });    
-        });
+        }); 
     });    
 };
 

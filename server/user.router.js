@@ -39,20 +39,7 @@ router.put("/:userId/cart/:itemId", (req, res) => {
     });
 });
 
-/** Add user  */
-router.post("/", (req, res) => {
-    const user1 = new User(req.body);
-	user1.save( err => {
-        if(err){
-			console.log("Error", err);
-			res.send(500);
-			return;
-		}
-		console.log("Success create");
-		res.send(201);
-	});
-});
- 
+
 /** Remove an item from a cart */
 router.delete("/:userId/cart/:itemId", (req, res) => {
     const index = req.user.cart.findIndex(itemId => itemId === req.item._id.toString());
@@ -105,7 +92,10 @@ router.get("/:userId/payments", authMiddleware, (req, res)=>{
 router.post("/:userId/checkout", authMiddleware, async(req, res) => {
     //console.log(req.body);
     const {error, amount} = await req.user.getCartAmount();
-    if(error) return res.send(500);
+    if(error) {
+        console.log("error");
+        return res.send(500);
+      }
     req.user.createPayment(amount)
     .then(()=> {
         return req.user.clearCart();
@@ -126,5 +116,15 @@ router.post("/:userId/checkout", authMiddleware, async(req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+    User.signup(req.body)
+    .then( user =>{
+      res.status(200).json(user);
+    })
+    .catch( err =>{
+      console.log("err", err);
+      res.send(500);
+    });
+  });
 
 module.exports = router; 

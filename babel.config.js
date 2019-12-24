@@ -9,8 +9,13 @@ const presets = [
   
 const plugins = ["@babel/plugin-proposal-class-properties"];
 
-module.exports = { 
+module.exports = {
+  env: {
+    test: {
+      plugins: ["@babel/plugin-transform-runtime"]
+    }
+  },
   presets,
   plugins,
- };
+};
   
