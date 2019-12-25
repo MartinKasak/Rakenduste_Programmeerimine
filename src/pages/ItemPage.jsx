@@ -12,7 +12,7 @@ class ItemPage extends React.PureComponent{
   constructor(props){ 
     super(props);
     this.state={ 
-     title:"",
+     vahetaTitle:"",
 
     };
   }
@@ -35,78 +35,84 @@ fetchItem = () => {
     });
     console.log("ITEMI_Id");
     console.log({itemId: this.props.match.params.itemId});
-    console.log({title: this.state.title});
+    console.log({title: this.props.match.params.itemId.title});
 
 };
-
-
   handleBuy = () => {
     this.props.dispatch(addItem(this.state));
 };
-
-handleSubmit = (event) => {
+//Toon servicest lihtsalt ItemPagi ja hakkas tööle
+handlePealkiriEdit = event => {
   event.preventDefault();
-  services.getTitle({itemId: this.props.match.params.itemId})
-  .then(() => {
-    toast.success("Success");
-})
-  .catch(err =>{
-    console.log(err);
-    toast.error("Error2!");
-
-});
-console.log({title: this.state.title});
+  fetch(`api/v1/items/${this.props.match.params.itemId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(this.state)
+  })
+    .then(() => {
+      toast.success("Nimi muutus");
+    })
+    .catch(err => {
+      console.log("Error", err);
+      toast.error("Nimi ei muutunud!");
+    });
 };
 
-handleChange = (e) => {
+handlePealkiriChange = event => {
   this.setState({
-      [e.target.name]: e.target.value,
+    vahetaTitle: event.target.value
   });
-  console.log(this.state);
-  
-  console.log("?????");
-  console.log({itemId: this.props.match.params.itemId});
-  console.log({title: this.state.title});
 };
-    render(){
+
+render(){
 
       return (
         <>
-        <div className={"box spacer itemPage"}>
-                    <div style={{display: "flex",}}>
-                        <div className={"itemPage-left"}>
-                            <img src={this.state.imgSrc} />
-                        </div>
-                        <div className={"itemPage-content"}>
-                            <div>
-                                <h2>{this.state.title}</h2>
-                            </div>
-                            <div>
-                                <div>
-                                    <p className={"itemPage-text"}>
-                                        {this.state.price} €
-                                    </p>
-                                </div>
-                                <div>
-                                    <p style={{textAlign: "justify"}}>
-                                        {loremIpsum}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    <form className="newTitle" onSubmit = {this.handleSubmit}>
-                        <input type="title" placeholder="title" name = {"title"} onChange = {this.handleChange}/>                        
-                        <button>Muuda nime</button>
-                    </form>
+          <div className={"box spacer itemPage"}>
+            <div style={{display: "flex",}}>
+              <div className={"itemPage-left"}>
+                  <img src={this.state.imgSrc} />
+                  </div>
+                    <div className={"itemPage-content"}>
+                    <div>
+                    <h2>{this.state.title}</h2>
                     </div>
-                    <div className={"itemPage-footer"}>
-                        <FancyButton onClick={this.handleBuy}>Osta</FancyButton>
-                    </div>
-        </div>
-        </>
+                     <div>
+                    <div>
+                      <p className={"itemPage-text"}>
+                     {this.state.price} €
+               </p>
+          </div>
+        <div>
+               <p style={{textAlign: "justify"}}>
+                      {loremIpsum}
+                  </p>
+              </div>
+           </div>
+       </div>              
+ <div className={"itemPage-footer"}>
+        <FancyButton onClick={this.handleBuy}>Osta</FancyButton>
+           </div>
+             </div>
+            </div>
+               <div className={"box spacer itemPage"}>
+                 <form className="editPealkiriForm" onSubmit={this.handlePealkiriEdit}>
+                <input
+                  type="string"
+                  placeholder="Muuda toote nime"
+                  name="title"
+                  value={this.state.vahetaTitle}
+                  onChange={this.handlePealkiriChange}
+                />
+            <button>Muuda</button>
+            </form>
+    </div>
+   </>
       );
     }
-  }
+}
 
   ItemPage.propTypes ={
     match: PropTypes.object.isRequired,

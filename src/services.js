@@ -127,13 +127,13 @@ export const lisaItem = ({imgSrc, title, price, category}) => {
 };
 
 /** Uue pealkirja lisamine **/
-export const getTitle = ({itemId}) => {
+export const changeTitle = ({itemId, title}) => {
     return fetch(`${basePath}/items/${itemId}`, {
         method: "PUT",
         headers: {
             "content-type": "application/json"
         },
-        body: JSON.stringify({itemId})
+        body: JSON.stringify({itemId, title})
     })
     .then(res => {
         if(!res.ok) throw "Toote nime muutmine õnnestus";

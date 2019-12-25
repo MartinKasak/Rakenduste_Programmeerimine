@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const Item = require("./item.model.js");
-const Title = require("./item.model.js");
+//const Title = require("./item.model.js");
 
 
 router.delete("/items/:itemId", (req, res) => {
@@ -34,9 +34,8 @@ router.post("/", (req, res) =>{
     });
 });
 
-/**Loome uue nime arvestus 13 **/
- 
-router.put("/items/:itemId/title", (req, res) =>{
+/**Loome uue nime arvestus 13 
+ * router.put("/items/:itemId/title", (req, res) =>{
     const newTitle = new Title(req.body);
     newTitle.save (err => {
         if(err){
@@ -47,7 +46,24 @@ router.put("/items/:itemId/title", (req, res) =>{
         console.log("Success createdTitle");
         res.sendStatus(201);
     });
-});
+});**/
+ 
+
+
+/*katsetus arvestus 13
+ */
+
+router.post("/:itemId", async (req, res) => {
+    const pealkiri = await Item.findOne({ _id: req.params.itemId});
+    pealkiri.title = req.body.vahetaTitle;
+    await pealkiri.save();
+
+    if (pealkiri.title !== req.body.vahetaTitle) {
+
+      return res.status(500).send("Error");
+    }
+    res.sendStatus(200);
+  });
 
 
 /** Returns an item */
