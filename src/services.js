@@ -113,7 +113,7 @@ export const getPayments = ({userId, token}) => {
 
 /*Arvestused*/
 export const lisaItem = ({imgSrc, title, price, category}) => {
-    return fetch(`${basePath}/items`, {
+    return fetch(`${basePath}/items/`, {
         method: "POST",
         headers: {
             "content-type": "application/json"
@@ -126,14 +126,30 @@ export const lisaItem = ({imgSrc, title, price, category}) => {
     });
 };
 
+/** Uue pealkirja lisamine **/
+export const getTitle = ({itemId}) => {
+    return fetch(`${basePath}/items/${itemId}`, {
+        method: "PUT",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify({itemId})
+    })
+    .then(res => {
+        if(!res.ok) throw "Toote nime muutmine õnnestus";
+        return true;
+    });
+};
 
-export const userUpdate = ({email}) => {
-    return fetch(`${basePath}/users`, {
+
+/*Meili muutmine */
+export const muudaEmail = ({userId,email}) => {
+    return fetch(`${basePath}/users/${userId}`, {
         method: "POST",
         headers: {
             "content-type": "application/json"
         },
-        body: JSON.stringify( {email})
+        body: JSON.stringify({userId, email})
     })
 
     .then(res => {

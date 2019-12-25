@@ -1,26 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./itemPage.css";
-
 import FancyButton from "../components/FancyButton.jsx";
 import {connect} from "react-redux";
 import {addItem} from "../store/actions.js";
 import * as services from "../services.js";
-
-
-
+import { toast } from "react-toastify";
+ 
 class ItemPage extends React.PureComponent{
 
-  constructor(props){
+  constructor(props){ 
     super(props);
-    this.state={};
+    this.state={ 
+     title:"",
+
+    };
   }
+
   componentDidMount() {
    this.fetchItem();
   }
-  fetchItem = () => {
-    services.getItem({itemId: this.props.match.params.itemId})
 
+
+fetchItem = () => {
+    services.getItem({itemId: this.props.match.params.itemId})
     .then(item =>{
       console.log("item", item);
       this.setState({
@@ -30,11 +33,40 @@ class ItemPage extends React.PureComponent{
     .catch(err =>{
       console.log("item page", err);
     });
-  };
+    console.log("ITEMI_Id");
+    console.log({itemId: this.props.match.params.itemId});
+    console.log({title: this.state.title});
+
+};
+
+
   handleBuy = () => {
     this.props.dispatch(addItem(this.state));
+};
 
+handleSubmit = (event) => {
+  event.preventDefault();
+  services.getTitle({itemId: this.props.match.params.itemId})
+  .then(() => {
+    toast.success("Success");
+})
+  .catch(err =>{
+    console.log(err);
+    toast.error("Error2!");
 
+});
+console.log({title: this.state.title});
+};
+
+handleChange = (e) => {
+  this.setState({
+      [e.target.name]: e.target.value,
+  });
+  console.log(this.state);
+  
+  console.log("?????");
+  console.log({itemId: this.props.match.params.itemId});
+  console.log({title: this.state.title});
 };
     render(){
 
@@ -62,6 +94,10 @@ class ItemPage extends React.PureComponent{
                                 </div>
                             </div>
                         </div>
+                    <form className="newTitle" onSubmit = {this.handleSubmit}>
+                        <input type="title" placeholder="title" name = {"title"} onChange = {this.handleChange}/>                        
+                        <button>Muuda nime</button>
+                    </form>
                     </div>
                     <div className={"itemPage-footer"}>
                         <FancyButton onClick={this.handleBuy}>Osta</FancyButton>

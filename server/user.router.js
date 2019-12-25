@@ -5,6 +5,7 @@ const Item = require("./item.model.js");
 const {authMiddleware} = require("./middlewares.js");
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 const Payment = require("./payments.model.js");
+const Email = require("./user.model.js");
 
 router.param("userId", (req, res, next, userId) => {
     User.findById(userId, (err, user) => {
@@ -26,7 +27,7 @@ router.param("itemId", (req, res, next, itemId) => {
 router.get("/:userId", authMiddleware, (req, res) => {
     res.send(req.user);
 });
-
+ 
 /** Add an item to a cart */
 router.put("/:userId/cart/:itemId", (req, res) => {
     req.user.cart.push(req.item._id.toString());
@@ -39,6 +40,20 @@ router.put("/:userId/cart/:itemId", (req, res) => {
     });
 });
 
+/* Change Email */
+
+router.post("/", (req, res) =>{
+    const newEmail = new Email(req.body);
+    newEmail.save (err => {
+        if(err){
+            console.log("Error: ", err);
+            res.sendStatus(500);
+            return;
+        }
+        console.log("Success createdItem");
+        res.sendStatus(201);
+    });
+});
 
 /** Remove an item from a cart */
 router.delete("/:userId/cart/:itemId", (req, res) => {

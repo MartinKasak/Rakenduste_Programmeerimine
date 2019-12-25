@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const Item = require("./item.model.js");
+const Title = require("./item.model.js");
 
 
 router.delete("/items/:itemId", (req, res) => {
@@ -13,7 +14,7 @@ router.delete("/items/:itemId", (req, res) => {
         console.log("Deletion successful");
         return res.sendStatus(204);
     });
-});
+}); 
 
 
 /*
@@ -29,6 +30,21 @@ router.post("/", (req, res) =>{
             return;
         }
         console.log("Success createdItem");
+        res.sendStatus(201);
+    });
+});
+
+/**Loome uue nime arvestus 13 **/
+ 
+router.put("/items/:itemId/title", (req, res) =>{
+    const newTitle = new Title(req.body);
+    newTitle.save (err => {
+        if(err){
+            console.log("Error: ", err);
+            res.sendStatus(500);
+            return;
+        }
+        console.log("Success createdTitle");
         res.sendStatus(201);
     });
 });

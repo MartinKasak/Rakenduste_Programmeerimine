@@ -28,6 +28,7 @@ class UserPage extends React.PureComponent {
             price:"",
             imgSrc:"",
             category:"",
+            email:"",
         };
         }
     
@@ -57,11 +58,31 @@ class UserPage extends React.PureComponent {
         .catch(err =>{
           console.log(err);
           toast.error("Error!");
-
+ 
     });
   };
 
     handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value,
+        });
+        console.log(this.state);
+    };
+
+    handleSubmit2 = (event) => {
+        event.preventDefault();
+        services.muudaEmail(this.state)
+            .then( () => {
+          toast.success("Muudetud Email");
+    })
+        .catch(err =>{
+          console.log(err);
+          toast.error("Error!");
+ 
+    });
+  };
+
+    handleChange2 = (event) => {
         this.setState({
             [event.target.name]: event.target.value,
         });
@@ -79,6 +100,10 @@ class UserPage extends React.PureComponent {
                         <div className="field">
                             {this.props.user.createdAt}
                         </div>
+                    <form className="newEmail" onSubmit = {this.handleSubmit2}>
+                        <input type="email" placeholder="email" name = {"email"} onChange = {this.handleChange2}/>                        
+                        <button>Muuda email</button>
+                    </form>
                         <FancyButton onClick={this.handleLogout}>Logi välja</FancyButton>
                         <br>
                         </br>

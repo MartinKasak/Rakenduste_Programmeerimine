@@ -27,5 +27,5 @@ itemSchema.statics.getItems = function(itemIds) {
 };
 
 const Item = mongoose.model("Item", itemSchema);
-
-module.exports = Item; 
+const Title = mongoose.model("title", itemSchema);
+module.exports = Item, Title; 
