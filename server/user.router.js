@@ -78,6 +78,18 @@ router.get("/", (req, res) => {
 });
 
 
+/*Emaili muutmine */
+
+router.post("/:userId", async (req, res) => {
+  const muudaEmail = await User.findOne({ _id: req.user._id });
+  muudaEmail.email = req.body.email;
+  await muudaEmail.save();
+  if (muudaEmail.email !== req.body.email) {
+    return res.status(500).send("ERROR");
+  }
+  res.sendStatus(200);
+});
+
 /*Delete all users*/
 router.delete("/", (req, res) => {
     User.deleteMany({}, (err, docs) => {

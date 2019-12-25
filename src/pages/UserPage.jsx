@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { UserPropTypes } from "../store/reducer.js";
 import {connect} from "react-redux";
 import FancyButton from "../components/FancyButton.jsx";
-import { tokenUpdate, userUpdate } from "../store/actions.js";
+import { tokenUpdate, userUpdate, refreshUser } from "../store/actions.js";
 import protectedRedirect from "../components/protectedRedirect.jsx";
 import * as selectors from "../store/selectors.js";
 import * as  services from "../services.js";
@@ -69,25 +69,61 @@ class UserPage extends React.PureComponent {
         console.log(this.state);
     };
 
-    handleSubmit2 = (event) => {
+    /*Emaili muutmine services.js fail lihtsalt */
+
+  handleEmail = (event) => {
         event.preventDefault();
-        services.muudaEmail(this.state)
-            .then( () => {
-          toast.success("Muudetud Email");
+        fetch(`api/v1/users/${this.props.user._id}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(this.state)
+        })
+        .then( () => {
+        this.props.dispatch(refreshUser());
+
+        toast.success("Muudetud Email");
     })
         .catch(err =>{
           console.log(err);
           toast.error("Error!");
  
     });
-  };
+};
 
-    handleChange2 = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value,
+handleEmailChange  = (event) => {
+    this.setState({
+    [event.target.name]: event.target.value,
         });
         console.log(this.state);
     };
+
+handleAddItemSubmit = e => {
+    e.preventDefault();
+    console.log("submit: add item", `api/v1/items/${this.props}`);
+    fetch("api/v1/items/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(this.state)
+    })
+      .then(() => {
+        toast.success("Item successfully added!");
+      })
+      .catch(err => {
+        console.log("Error", err);
+        toast.error("Adding item failed!");
+      });
+  };
+
+  handleAddItem = e => {
+    // console.log("handle add item", e.target.name, e.target.value);
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
 
     render() {
         return (
@@ -100,10 +136,7 @@ class UserPage extends React.PureComponent {
                         <div className="field">
                             {this.props.user.createdAt}
                         </div>
-                    <form className="newEmail" onSubmit = {this.handleSubmit2}>
-                        <input type="email" placeholder="email" name = {"email"} onChange = {this.handleChange2}/>                        
-                        <button>Muuda email</button>
-                    </form>
+                        
                         <FancyButton onClick={this.handleLogout}>Logi välja</FancyButton>
                         <br>
                         </br>
@@ -121,6 +154,13 @@ class UserPage extends React.PureComponent {
                         <button>Loo uus toode</button>
                     </form> 
                 </div>
+                <div className={"box"}>
+                        <form className="editForm" onSubmit={this.handleEmail}>
+                       <input type="email"  placeholder="Muuda email"    name="email"  value={this.state.email} onChange={this.handleEmailChange}
+                         />
+                        <button>Muuda Meil</button>
+                       </form>
+                       </div>
                 <br></br>
                 <h2  align="center">Kasutaja Ostuajalugu</h2>
                 <div className={"box"}>
